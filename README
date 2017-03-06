@@ -1,0 +1,44 @@
+README
+
+To use this library
+
+
+1. Download all libraries in the list
+
+	1.liblinear  (recommend the latest ver.)
+	2.libsvm     (recommend the latest ver.)
+	3.litekmeans.m    
+		there are many sources and I don't know who implemented this first 
+		https://jp.mathworks.com/matlabcentral/fileexchange/53921-code-of-the-paper--graph-clustering-by-congruency-approximation-/content/CAC_for_clustering_demo_2015/related/litekmeans.m
+		https://github.com/trigeorgis/Deep-Semi-NMF/blob/master/matlab/eval/litekmeans.m
+	4.MLkNN,BP-MLL,LEAD,LIFT,MLNB,ML-RBF,RankSVM from Prof. Min-Ling Zhang' site 
+		http://cse.seu.edu.cn/PersonalPage/zhangml/
+			MLkNN:http://cse.seu.edu.cn/PersonalPage/zhangml/files/ML-kNN.rar
+			RankSVM:http://cse.seu.edu.cn/PersonalPage/zhangml/files/RankSVM.rar
+			BP-MLL:http://cse.seu.edu.cn/PersonalPage/zhangml/files/bp-mll.rar
+			ML-RBF:http://cse.seu.edu.cn/PersonalPage/zhangml/files/ML-RBF.rar
+			MLNB:http://cse.seu.edu.cn/PersonalPage/zhangml/files/MLNB.rar
+			LEAD:http://cse.seu.edu.cn/PersonalPage/zhangml/files/LEAD.rar
+	5.LSDR methods implemented by Dr. Hsuan-Tien Lin https://www.csie.ntu.edu.tw/~htlin/
+		mlc_lsdr: https://github.com/hsuantien/mlc_lsdr
+	
+	6.CLMLC,MLSF,MLC_MATLAB implemented by Dr. Lu Sun:
+		CLMLC:https://github.com/futuresun912/CLMLC
+		MLSF: https://github.com/futuresun912/MLSF
+		MLC_MATLAB:https://github.com/futuresun912/MLC_Matlab
+
+2. Change functions and file names implemented by Prof. Min-Ling Zhang,
+ UNFORTUNATELY, our naming rules are overlapped to his rule. (algorithm_train.m or algorithm_test.m)
+	1. For Rank-SVM
+		1.filename:RankSVM_train, RankSVM_test ---> RankSVM_train_raw.m RankSVM_test_raw.m 
+		2.function name: RankSVM_train_raw RankSVM_test_raw , respectively
+		3.contents: RSVM_test returns some evalution results such as Hamming_loss. in this library, its unneccessary. so delete them
+			DELETE  the last senteces:
+			HammingLoss=Hamming_loss(Pre_Labels,test_target);
+			RankingLoss=Ranking_loss(Outputs,test_target);
+			OneError=One_error(Outputs,test_target);
+			Coverage=coverage(Outputs,test_target);
+			Average_Precision=Average_precision(Outputs,test_target);
+			CHANGE Return values as function [Outputs,Threshold,Pre_Labels] =RSVM_test...
+	
+

@@ -1,0 +1,70 @@
+
+We implemented these codes without mex file for the readbility. 
+Therefore, the computational time of both training and testing is relatively slow. 
+
+Other codes and libraries needed to execute:
+%% For reviewers, we included all functions
+1. Statistical toolbox if you choose Jaccard distance to construct k-nn
+2. Laplacian Eigen map code provided by M.belkin (adjacency.m and L2_distance.m)
+3. ridge regression function from CPLST https://github.com/hsuantien.
+
+
+Dataset file contains:
+		Xtr: instance x feature matrix (training)
+		Xts: instance x feature matrix (testing)
+		Ytr: instance x label matrix   (training)
+		Yts: instance x label matrix   (testing)
+		
+
+How to use: 
+     We use train_MLLEM for embedding training instances and labels
+     [G H]=train_MLLEM (Xtr,Ytr,params)
+     Input: 
+     	Xtr: instance x feature matrix of training instances
+     	Ytr: instance x labels matrix of training instances
+     	params: a strucutre which contains parameters as follows:
+     	params.dim: the dimension of embedding space
+     	params.opsWI: option settings to construct instance-instance relation
+     		opsWI=1: k-nn relations on F dimensional space measured by L2-distance (used in the paper)
+			opsWI=2: k-nn relations on label space measured by innerproduct
+		params.opsWL: option settings to construct label-label relation
+			opsWL=1: k-nn relations measured by innerproduct  (used in the paper)
+			opsWL=2: k-nn relations measured by Jaccard distance ( squareform.m and pdist.m in statistical toolbox are needed)
+			opsWL=3: k-nne relations measured by L2_distance
+			 
+     	params.k1: the number of nearest neighbor for instance-instance relationship
+     	params.k2: the number of nerarest neighbor for label-label relationship
+     	params.alpha: weight for instance-instance relationship
+     	params.beta : weight for label-label relationship
+     	
+     	
+	Output:
+		G: instance x K matrix 
+		H: label x K matrix 
+		V:  K x K diagonal matrix with eigen values
+
+	We use test_MLLEM for embedding test instances 
+	[Results]=test_MLLEM(Xtr,Ytr,Xts,Yts,G,H,params)
+	Input:
+		Xtr: instance x feature matrix of training instances
+		Xts: instance x feature matrix of testing instances
+		Ytr: instance x label matrix of training instances
+		Yts: instance x label matrix of testing instsnces
+		params: a sturucture which contains parameters as follows: (We keep the setting used in train_MLLEM and add some parameters for this)
+		params.dim: the dimension of embedding space
+		params.method
+				method='L': Linear embedding with ridge regression
+				method='NL': NonLinear embedding
+		params.lambda: the ridge paramter for linear embedding
+		params.k2: the number of nearest neighbor for nonlinear embedding
+		
+	Output:
+		Results: contains
+			Results.top1: the result of top-1 precision averaged over instances
+			Results.top3: the result of top-3 precision averaged over instances
+			Results.top5: the result of top-5 precision averaged over instances             
+			Results.AUC : the result of AUC averaged over instances
+		
+		
+
+		

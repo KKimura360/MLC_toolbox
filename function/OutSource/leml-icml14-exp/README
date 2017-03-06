@@ -1,0 +1,97 @@
+As the codes depend on BLAS libraries, we only provide pre-built binary files for 64-bit Ubuntu. 
+Source codes are available upon request. 
+
+Requirement
+===========
+	64-bit Ubuntu machine with the following libararies installed.
+        linux-vdso.so.1 =>  (0x00007fffae9ff000)
+        liblapack_atlas.so.3gf => /usr/lib/liblapack_atlas.so.3gf (0x00007ffa84717000)
+        libf77blas.so.3gf => /usr/lib/libf77blas.so.3gf (0x00007ffa844f9000)
+        libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007ffa841f5000)
+        libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007ffa83ef9000)
+        libgomp.so.1 => /usr/lib/x86_64-linux-gnu/libgomp.so.1 (0x00007ffa83cea000)
+        libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007ffa83ad3000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ffa83713000)
+        libcblas.so.3gf => /usr/lib/libcblas.so.3gf (0x00007ffa834f4000)
+        libatlas.so.3gf => /usr/lib/libatlas.so.3gf (0x00007ffa82fc2000)
+        libgfortran.so.3 => /usr/lib/x86_64-linux-gnu/libgfortran.so.3 (0x00007ffa82cab000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007ffa82a8e000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007ffa84967000)
+        librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007ffa82885000)
+        libquadmath.so.0 => /usr/lib/x86_64-linux-gnu/libquadmath.so.0 (0x00007ffa8264f000)
+
+Command-Line Interface
+======================
+   Simple Example:
+	   $ ./train-ml -k 50 datasets/bibtex/ 
+
+   Detailed Usage:
+		Usage: train-ml [options] data-dir/
+		options:
+			-s type : set type of solver (default 10)
+				 0 -- L2R_LS (Squared Loss)
+				 1 -- L2R_LR (Logistic Regression)
+				 2 -- L2R_SVC (Squared Hinge Loss)
+				 10 -- L2R_LS (Squared Loss) Fully observation
+			-k rank : set the rank (default 10)
+			-n threads : set the number of threads (default 8)
+			-l lambda : set the regularization parameter lambda (default 0.1)
+			-t max_iter: set the number of iterations (default 10)
+			-T max_tron_iter: set the number of iterations used in TRON (default 5)
+			-g max_cg_iter: set the number of iterations used in CG (default 20)
+			-e epsilon : set inner termination criterion epsilon of TRON (default 0.1)
+			-P top-p: set top-p accruacy (default 5)
+			-q show_predict: set top-p accruacy (default 1)
+	    data-dir:
+			Should contain 4 files (X.smat, Xt.smat, Y.smat, Yt.smat), which can be generated 
+            from smat_wrtie function provided in the MATLAB interface.
+
+MATLAB Interface
+================
+	Requirement:
+		64-bit MATLAB on a Linux machine.
+
+	Simple Example:
+	>> cd matlab
+	>> load bibtex
+	>> train_ml(data.Y, data.X, data.Yt, data.Xt, '-k 50');
+
+	Detailed Usage of ``train_ml'':
+		Usage: [W H wall_time] = train_ml(Y, X, Yt, Xt [, 'options'])
+			   [W H wall_time] = train_ml(Y, X, Yt, Xt, W0, H0 [, 'options'])
+			   size(W0) = (rank, nr_feats), size(H0) = (rank, nr_labels)
+		options:
+			-s type : set type of solver (default 10)
+				 0 -- L2R_LS (Squared Loss)
+				 1 -- L2R_LR (Logistic Regression)
+				 2 -- L2R_SVC (Squared Hinge Loss)
+				 10 -- L2R_LS (Squared Loss) Fully observation
+			-k rank : set the rank (default 10)
+			-n threads : set the number of threads (default 4)
+			-l lambda : set the regularization parameter lambda (default 0.1)
+			-t max_iter: set the number of iterations (default 10)
+			-T max_tron_iter: set the number of iterations used in TRON (default 5)
+			-g max_cg_iter: set the number of iterations used in CG (default 20)
+			-e epsilon : set inner termination criterion epsilon of TRON (default 0.1)
+			-P top-p: set top-p accruacy (default 5)
+			-q show_predict: set top-p accruacy (default 1)
+
+	Detailed Usage of ``smat_write'':
+		Usage: smat_write(M, 'filename')
+		Please use this function to generate *.smat file for the use in command-line interface.
+
+Citation
+========
+	Please acknowlege the use of the code with a citation.
+	Hsiang-Fu Yu, Prateek Jain, Purushottam Kar, and Inderjit S. Dhillon,
+	Large-scale Multi-label Learning with Missing Labels, ICML 2014.
+
+	@inproceedings{hfy14a,
+		title={Large-scale Multi-label Learning with Missing Labels},
+		author={Hsiang-Fu Yu and Prateek Jain and Purushottam Kar and Inderjit S. Dhillon},
+		booktitle={International Conference of Machine Learning},
+		year={2014}
+	}
+
+For any questions and comments, please send your email to
+Hsiang-Fu Yu <rofuyu@cs.utexas.edu>. 

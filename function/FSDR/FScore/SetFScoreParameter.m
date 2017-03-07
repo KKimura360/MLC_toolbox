@@ -3,4 +3,4 @@ function[param]=SetFScoreParameter(~)
 
 % opts.dim   The dimensionality of feature subspace
 
-param.dim   = 50;
+param.dim   = 'numF*0.5';

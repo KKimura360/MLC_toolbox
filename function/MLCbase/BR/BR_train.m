@@ -21,8 +21,4 @@ for label=1:numL
     [model{label},method,time{label}]=feval([method.base.name,'_train'],X,Y(:,label),method);
 end
 
-%the ridge regression shares invX among labels, so delete it after learning.
-if isfield(method.base,'invX')
-    method=rmfield(method.base,'invX');
-end
 

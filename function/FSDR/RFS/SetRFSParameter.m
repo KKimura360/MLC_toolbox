@@ -6,5 +6,5 @@ function[param]=SetRFSParameter(~)
 % opts.dim   The dimensionality of feature subspace
 
 param.alpha = 1;
-param.MaxIt = 50;
-param.dim   = 50;
+param.iter = 20;
+param.dim   = 'numF*0.5';

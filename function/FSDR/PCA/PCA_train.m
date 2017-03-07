@@ -14,12 +14,15 @@ function[model,time]=PCA_train(X,Y,method)
 %% Method
 %error check 
 
-%initialization
+%% initialization
 dim=method.param{1}.dim;
 model=cell(3,1);
 time=cell(2,1);
 tmptime=cputime;
-
+if ischar(dim)
+    eval(['dim=',method.param{1}.dim]);
+    dim=ceil(dim);
+end
 
 %% Centering instances
 meanX = mean(X,1);

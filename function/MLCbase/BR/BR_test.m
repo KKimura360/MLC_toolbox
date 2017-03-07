@@ -14,7 +14,7 @@ numL=length(model);
 conf=zeros(numNt,numL);
 time=cell(numL+1,1);
 time{end}=0;
-length(model)
+
 % classify for each label
 for label=1:numL
     [conf(:,label),time{label}]=feval([method.base.name,'_test'],X,Y(:,label),Xt,model{label},method);

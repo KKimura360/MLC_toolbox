@@ -1,4 +1,4 @@
-function[conf]=FScore_test(X,Y,Xt,model,method)
+function[conf,time]=FScore_test(X,Y,Xt,model,method)
 %% Input
 %X: Feature Matrix (NxF)
 %Y: Label   Matrix (NxL)
@@ -15,10 +15,11 @@ function[conf]=FScore_test(X,Y,Xt,model,method)
 %% Method 
 % Get learned model
 id = model{2};
-
+time=cell(2,1);
+time{end}=0;
 %% Feature selection 
 tmpX  = X(:,id);
 tmpXt = Xt(:,id);
 
 % Testing
-[conf] = feval([method.name{2},'_test'],tmpX,Y,tmpXt,model{1},Popmethod(method));
+[conf,time{1}] = feval([method.name{2},'_test'],tmpX,Y,tmpXt,model{1},Popmethod(method));

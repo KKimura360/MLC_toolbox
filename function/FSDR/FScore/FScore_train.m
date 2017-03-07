@@ -1,22 +1,31 @@
-function [model] = FScore_train(X,Y,method)
+function [model,time] = FScore_train(X,Y,method)
+%% Input 
 %Fisher Score, use the N var formulation
-%   X, the data, each raw is an instance
-%   Y, the label in 1 2 3 ... format
-
+%X: Feature matrix  (NxF) 
+%Y: Label matrix    (NxL)
+%% Output 
+%model
 %% Reference (APA style from google scholar)
 % Hart, P. E., Stork, D. G., & Duda, R. O. (2001). Pattern classification. John Willey & Sons.
 
-%% Set parameters
-numL = size(Y,1);
-[~, numF] = size(X);
-out.W = zeros(1,numF);
-dim = method.param{1}.dim;
+%%% Method
 
+%% Initialization
+[numN,numL] = size(Y);
+[~, numF] = size(X);
+W = zeros(1,numF);
+dim = method.param{1}.dim;
+if ischar(dim)
+    eval(['dim=',method.param{1}.dim]);
+    dim=ceil(dim);
+end
+time=cell(2,1);
+tmptime=cputime;
 % statistic for classes
 cIDX = cell(numL,1);
 n_i = zeros(numL,1);
 for j = 1:numL
-    cIDX{j} = find(Y(j,:)==1);
+    cIDX{j} = find(Y(:,j)==1);
     n_i(j) = length(cIDX{j});
 end
 
@@ -35,24 +44,24 @@ for i = 1:numF
     end
     
     if temp1 == 0
-        out.W(i) = 0;
+        W(i) = 0;
     else
         if temp2 == 0
-            out.W(i) = 100;
+            W(i) = 100;
         else
-            out.W(i) = temp1/temp2;
+            W(i) = temp1/temp2;
         end
     end
 end
 
-[~, out.fList] = sort(out.W, 'descend');
-out.prf = 1;
-id = out.fList(1:dim);
+[~, fList] = sort(W, 'descend');
+id = fList(1:dim);
 
+time{end}=cputime-tmptime;
 %% Return the learned model
 model = cell(3,1);
-[model{1}] = feval([method.name{2},'_train'],X(:,id),Y,Popmethod(method));
+[model{1},time{1}] = feval([method.name{2},'_train'],X(:,id),Y,Popmethod(method));
 model{2} = id;
-model{3} = out.W;
+model{3} = W;
 
 end

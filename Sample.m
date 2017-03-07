@@ -24,7 +24,7 @@ numCV=10;   %: 80%traning/10%test: 3,5,10 are available
 %if you want to conduct feature selection, clustering and MLC with this
 %order, method.func will be set as follows:
 %method.func={'FSDR','Clustering','MLC'}
-method.name={'triClass','LP'};
+method.name={'FScore','BR'};
 method.param=cell(length(method.name),1);
 %parameter set
 for m= 1:length(method.name)
@@ -44,8 +44,8 @@ method.base.param.lambda=10;
 %% Thresholding 
 % 'Scut','Pcut','Rcut' are availabel, but 'RCut','Pcut' are not implemented
 % yet (2017/02/08)
-method.th.type='RCut';
-method.th.param=4;
+method.th.type='SCut';
+method.th.param=0.5;
 
 
 %% show your selection of methods, datasets and methodeters.

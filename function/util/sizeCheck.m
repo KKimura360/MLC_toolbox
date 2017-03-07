@@ -10,6 +10,8 @@ if numN~=numNL
         X=X';
         [numN,numF]=size(X);
     else
+        size(X)
+        size(Y)
         error('the label matrix and the feature matix must be a same index')
     end
 end

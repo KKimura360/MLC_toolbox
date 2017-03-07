@@ -1,7 +1,7 @@
-function[param]=SetRAkELParameter(pseudo)
-%SetHOMERParameter
+function[param]=SetPSParameter(pseudo)
 
-%Number of Clusters
-param.numK=3;
-param.type='normal';
+param.numClass=5;
+param.type='B';
+
+
 

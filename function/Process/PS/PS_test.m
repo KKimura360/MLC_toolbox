@@ -1,4 +1,4 @@
-function[conf]=RAkEL_test(X,Y,Xt,model,method)
+function[conf,time]=PS_test(X,Y,Xt,model,method)
 %% Input
 %X: Feature Matrix (NxF)
 %Y: Label   Matrix (NxL)
@@ -14,10 +14,10 @@ function[conf]=RAkEL_test(X,Y,Xt,model,method)
 %% Method
 
 %error check 
-
+newX=model{2};
+newY=model{3};
 %initialization
-[numN,numF]=size(X);
-[numNL,numL]=size(Y);
-[numNt,~]=size(Xt);
-[conf]=feval([method.base.name,'_test'],X,Y,Xt,model{1},method);
+time=cell(2,1);
+time{end}=0;
+[conf,time{1}] = feval([method.name{2},'_test'],newX,newY,Xt,model{1},Popmethod(method));
 

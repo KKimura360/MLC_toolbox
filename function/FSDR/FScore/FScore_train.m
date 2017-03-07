@@ -16,7 +16,7 @@ function [model,time] = FScore_train(X,Y,method)
 W = zeros(1,numF);
 dim = method.param{1}.dim;
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
 time=cell(2,1);

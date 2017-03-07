@@ -25,7 +25,7 @@ function [Gauc Lauc] = AVGauc(Y,Yhat)
 Gauc=0;
 Lauc=0;
 
-[N L]=size(Y);
+[N, L]=size(Y);
 
 k=0;
 for n=1:N

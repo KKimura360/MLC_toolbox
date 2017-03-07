@@ -8,10 +8,10 @@ param.type='normal';
 
 %classifier for the 1st layer
 param.MLC.name={'BR'};
-%param.MLC.base.svmparam='-s 2 -q';
+%.param.svmparam='-s 2 -q';
 param.MLC.base.name='ridge';
 param.MLC.base.param.lambda=10;
 param.MLC.th.type='Scut';
-param.MLC.th.param=0.3;
+param.MLC.th.param=0.4;
 
 

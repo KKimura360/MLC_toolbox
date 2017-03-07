@@ -9,7 +9,7 @@ rng('default')
 
 %% Select Dataset with a rate of training/test instances
 %Dataset name
-dataname='corel5k';
+dataname='yeast';
 %number of CV corresponding to the rate of instances 
 numCV=10;   %: 80%traning/10%test: 3,5,10 are available
 
@@ -35,7 +35,6 @@ end
 %% BaseClassifier
 % base classifier name
 %method.base.name='knn';
-%method.base.name='ridge';
 method.base.name='linear_svm';
 % base classifier methodeters 
 method.base.param.svmparam='-s 2 -q';

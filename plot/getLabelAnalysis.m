@@ -1,4 +1,4 @@
-function getLabelAnalysis(Y,Yt,pred,conf);
+function getLabelAnalysis(Y,Yt,pred,conf)
 %% Input
 %Y: Label matrix for traning
 %Yt: Label matrix for test
@@ -86,4 +86,40 @@ title('Ratio:False-Negative, (Yhat=0,Y=1)/ sum(Y=1)');
 grid on;
 
 
+%% label-based auc 
+figure;
+subplot(3,1,1);
+Labelauc=zeros(numL,1);
+for label=1:numL
+	Labelauc(label)=auc(Yt(:,label),conf(:,label));
+end
+Labelauc(isnan(Labelauc))=0;
+bar(Labelauc);
+title('Label-based AUC');
+grid on
+%% top-1 contribution
+subplot(3,1,2);
+% top-1 predicition
+[~,ind]=max(conf');
+tmppred=zeros(numNt,numL);
+tmppred(:,ind)=1;
+tmppred= tmppred .* Yt;
+cont=sum(tmppred) ./ numNt;
+bar(cont')
+title('Top-1 contribution')
+grid on;
 
+
+%% top-3 contribution
+subplot(3,1,3);
+
+[~,ind]=sort(conf,2,'descend');
+tmppred=zeros(numNt,numL);
+for i=1:numNt
+    tmppred(i,ind(i,1:3))=1;
+end
+tmppred= tmppred .* Yt;
+cont=sum(tmppred) ./ (numNt);
+bar(cont')
+title('Top-3 contribution')
+grid on;

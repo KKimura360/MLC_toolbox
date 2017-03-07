@@ -4,32 +4,38 @@
 addAllpath; rng('default');
 
 %% Datasets to use 
-dataNames={'enron','yeast','medical','CAL500','corel5k','scene','genbase','tmc2007-500'};
+dataNames={'enron','yeast','medical'};
 numCV=5; numTrial=2; % less than 10
 
 
 %% Select methods to use
 methodNames=cell(2,1);
-methodNames{1}={'fRAkEL','LP'};
+methodNames{1}={'RAkEL','LP'};
 methodNames{2}={'COCOA','LP'};
-%methodNames{3}={'HOMER','LP'};
-%methodNames{4}={'CLMLC','LP'};
-%methodNames{5}={'CBMLC','LP'};
-%methodNames{6}={'fRAkEL','LP'};
-%methodNames{7}={'MLCC','LP'};
-%methodNames{8}={'TREMLC','LP'};
+methodNames{3}={'CLMLC','ECC','rCC'};
+methodNames{4}={'CLMLC','RAkEL','LP'};
+methodNames{5}={'CBMLC','BR'};
+methodNames{6}={'CBMLC','LP'};
+methodNames{7}={'CBMLC','ECC','rCC'};
+methodNames{8}={'CBMLC','RAkEL','LP'};
 % methodNames{3}={'RAkEL','LP'};
 % methodNames{4}={'fRAkEL','LP'};
 % methodNames{5}={'HOMER','LP'};
 % methodNames{6}={'CBMLC','LP'};
 
 % functionNames will be used for plot
-functionNames={'fRAkEL-LP','COCOA-LP'}; %,'HOMER-LP','CLMLC-LP','CBMLC-LP','fRAkEL-LP','MLCC-LP','TREMLC-LP'};
+functionNames={'CLMLC-BR','CLMLC-LP','CLMLC-ECC','CLMLC-RAkEL','CBMLC-BR','CBMLC-LP','CBMLC-ECC','CBMLC-RAkEL'};
 methodSet=cell(2,1);
 
 for countMethod=1:length(methodNames)
     method.name=methodNames{countMethod};
     method=SetALLParams(method);
+    if countMethod==2
+        method.param{1}.ClsMEthod='randpartition';
+    end
+    if countMethod==3
+        method.param{1}.ClsMEthod='litekmeans';
+    end
     %Common base classifier is considered in this script
     %method.base.name='ridge';
     method.base.name='linear_svm';

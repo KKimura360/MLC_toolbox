@@ -45,6 +45,10 @@ end
 
 %% Initilization
 numM=method.param{1}.numM;
+if ischar(numM)
+    eval(['numM=',method.param{1}.numM]);
+    numM=ceil(numM);
+end
 numK=method.param{1}.numK;
 model=cell(numM+2,1);
 time=cell(numM+2);

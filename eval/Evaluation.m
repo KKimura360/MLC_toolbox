@@ -31,7 +31,7 @@ tmp=evalnDCG(conf,Yt,5);
 eval.dcg1=tmp(1);
 eval.dcg3=tmp(3);
 eval.dcg5=tmp(5);
-[~,eval.auc]=AVGauc(Yt,conf);
+[~,eval.auc]=AVGauc(Yt',conf');
 
 %based on the other implementations, tranpose predictions and ground truth.
 Yt=Yt';

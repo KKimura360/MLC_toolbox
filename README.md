@@ -3,7 +3,7 @@ A MATLAB/OCTAVE library for Multi-Label Classification
 
 ## Current available functions: 
 Clustering-based method, CBMLC, HOMER, CLMLC  
-Ensemble-based method,   ECC, RAkEL, RAkEL-d fRAkEL, TREMLC, MLCEnsemble  
+Ensemble-based method,   ECC, RAkEL, RAkEL-d fRAkEL, TREMLC, MLCEnsemble,COCOA  
 Feature Space Dimension Reduction (FSDR)  
 FSDR-unsupervised method (confirmed), PCA, NMF, RFS     
 FSDR-supervised method (confirmed), MLSI, MFFM, OPLS, MLHSL, FScore  
@@ -69,7 +69,7 @@ Now we support `liinear_svm` from LIBLINEAR,`svm` from LIBSVM, `ridge` (ridge re
 
 # Threshold   
 Some methods returns not discrete 0-1 classification results but scores for labels  
-To obtain <b>classification result</b>, threshold is needed. 
+To obtain <b>classification result</b>, threshold is needed.   
 `method.th.type='Scut' or 'Rcut' or 'Pcut' `   
 `method.th.param=parameter` 
 Now, we support, Scut, Rcut, Pcut. 
@@ -77,7 +77,7 @@ Now, we support, Scut, Rcut, Pcut.
 ---
 
 # Results
-`res.{criteria}' contains result   
+`res.{criteria}` contains result   
 
 
 

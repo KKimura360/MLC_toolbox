@@ -9,7 +9,7 @@ rng('default')
 
 %% Select Dataset with a rate of training/test instances
 %Dataset name
-dataname='corel5k';
+dataname='enron';
 %number of CV corresponding to the rate of instances 
 numCV=10;   %: 80%traning/10%test: 3,5,10 are available
 
@@ -24,7 +24,7 @@ numCV=10;   %: 80%traning/10%test: 3,5,10 are available
 %if you want to conduct feature selection, clustering and MLC with this
 %order, method.func will be set as follows:
 %method.func={'FSDR','Clustering','MLC'}
-method.name={'COCOA','LP'};
+method.name={'CBMLC','BR'};
 method.param=cell(length(method.name),1);
 %parameter set
 for m= 1:length(method.name)

@@ -2,7 +2,7 @@ function[param]=SetCBMLCParameter(pseudo)
 %SetHOMERParameter
 
 %Number of Clusters
-param.numCls=20;
+param.numCls=5;
 %Clustering method
 param.ClsMethod='litekmeans';
 

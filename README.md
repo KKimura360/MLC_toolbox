@@ -6,8 +6,8 @@ Clustering-based method, CBMLC, HOMER, CLMLC
 Ensemble-based method,   ECC, RAkEL, RAkEL-d fRAkEL, TREMLC, MLCEnsemble,COCOA  
 Feature Space Dimension Reduction (FSDR)  
 FSDR-unsupervised method (confirmed), PCA, NMF, RFS     
-FSDR-supervised method (confirmed), MLSI, MFFM, OPLS, MLHSL, FScore  
-FSDR-supervised method (uncofirmed), MLJMI, MLMIM, MLMRMR, READER  
+FSDR-supervised method (confirmed), MLSI, MFFM, OPLS, MLHSL, FScore, MLJMI, MLMIM, MLMRMR  
+FSDR-supervised method (uncofirmed) READER  
 Label Space Dimension Reduction (LSDR), CSSP,PLST,CPLST,FaIE  
 Process methods, CC, Meta-Label CC, PS, triClass    
 MLC-base classifiers (confirmed), BR, LP  

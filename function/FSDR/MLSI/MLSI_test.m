@@ -21,10 +21,10 @@ function[conf,time]=MLSI_test(X,Y,Xt,model,method)
 time=cell(2,1);
 tmptime=cputime;
 % obtain regression result
-L=model{2};
+V=model{2};
 W=model{3};
-tmpX= (X* L * W.^(1/2));
-tmpXt=(Xt* L * W.^(1/2));
+tmpX= (X* V * W.^(1/2));
+tmpXt=(Xt* V * W.^(1/2));
 time{end}=cputime-tmptime;
 [conf, time{1}]=feval([method.name{2},'_test'],tmpX,Y,tmpXt,model{1},Popmethod(method));
 

@@ -1,16 +1,16 @@
-function[conf]=MLMRMR_test(X,Y,Xt,model,method)
+function[conf,time]=MLMRMR_test(X,Y,Xt,model,method)
 %% Input
 %X: Feature Matrix (NxF)
 %Y: Label   Matrix (NxL)
 %Xt:Feature Matrix (NtxF) for test data
-%model learned by PCA_train
+%model learned by MLMRMR_train
 %% Output
 %conf: confidence values (Nt x L);
 %linear_svm does not return confidence value since LIBLINEAR does not
 %support it.
 
 %% Reference (APA style from google scholar)
-% Hart, P. E., Stork, D. G., & Duda, R. O. (2001). Pattern classification. John Willey & Sons.
+% Peng, H., Long, F., & Ding, C. (2005). Feature selection based on mutual information criteria of max-dependency, max-relevance, and min-redundancy. IEEE Transactions on pattern analysis and machine intelligence, 27(8), 1226-1238.
 
 %% Method 
 % Get learned model
@@ -21,4 +21,4 @@ tmpX  = X(:,id);
 tmpXt = Xt(:,id);
 
 % Testing
-[conf] = feval([method.name{2},'_test'],tmpX,Y,tmpXt,model{1},Popmethod(method));
+[conf,time] = feval([method.name{2},'_test'],tmpX,Y,tmpXt,model{1},Popmethod(method));

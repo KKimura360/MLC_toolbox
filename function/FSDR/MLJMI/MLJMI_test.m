@@ -10,10 +10,11 @@ function[conf,time]=MLJMI_test(X,Y,Xt,model,method)
 %support it.
 
 %% Reference (APA style from google scholar)
-% Hart, P. E., Stork, D. G., & Duda, R. O. (2001). Pattern classification. John Willey & Sons.
+%Sechidis, K., Nikolaou, N., & Brown, G. (2014, August). Information theoretic feature selection in multi-label data through composite likelihood. In Joint IAPR International Workshops on Statistical Techniques in Pattern Recognition (SPR) and Structural and Syntactic Pattern Recognition (SSPR) (pp. 143-152). Springer Berlin Heidelberg.
 
-%% Method 
-% Get learned model
+%%% Method 
+
+%% Get learned model
 id = model{2};
 
 %% Feature selection 

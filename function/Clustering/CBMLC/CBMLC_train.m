@@ -26,11 +26,15 @@ function[model,time]=CBMLC_train(X,Y,method)
 %SCtype=2 normalized Laplacian
 %SCtype=3 normalized Laplacian   
 % See util/Spectral_Clsutering/Spectral_Clustering.m
+%% for hierarchical k-means clustering on SLEEC
+%method.numCls: number of clusters for each layer
+%method.mxPts : number of maximum instances in a cluster ( if #members
+%larger than mxPts, next layer will be considered. 
 %% Reference (APA style from google scholar)
 %Nasierding, G., Tsoumakas, G., & Kouzani, A. Z. (2009, October). Clustering based multi-label classification for image annotation and retrieval. In Systems, Man and Cybernetics, 2009. SMC 2009. IEEE International Conference on (pp. 4514-4519). IEEE.
 %Batzaya Norov-Erdene, Mineichi Kudo, Lu Sun and Keigo Kimura, "Locality in Multi-Label Classification Problems," in Proceedings of the 23rd International Conference on Pattern Recognition (ICPR 2016), Cancun, Mexico.
 %Also Bhatia, K., Jain, H., Kar, P., Varma, M., & Jain, P. (2015). Sparse local embeddings for extreme multi-label classification. In Advances in Neural Information Processing Systems (pp. 730-738).
-
+%
 %%% Method 
 
 %% error check 
@@ -71,6 +75,39 @@ switch ClsMethod
         [assign]=Spectral_Clustering(W,numCls,method.param{1});
         %calculate centroids of clusters
         centroid=zeros(numCls,numF);
+        for i=1:numCls
+            index= (assign==i);
+            centroid(i,:)=mean(X(index,:));
+        end
+    case {'hkmeans','hierarchical_kmeans'}
+        %#number of maximum instances in a cluster
+        mxPts=method.param{1}.mxPts;
+        % number of iterations
+        iter=10;
+        % number of total clusters (for inner loop)
+        totalClusters=0;
+        % if frac =0, not hierarchical 
+        frac=1;
+        % #threads to use
+        numThreads=1;
+        % temporary files 
+        fid=fopen('tmp.txt','w');
+        [assign1, totalClusters, ~] =hierKmeansFt(X',iter, numCls, mxPts,totalClusters, fid, frac, numThreads);
+        assign = zeros(size(X, 1), 1);
+        totalClusters
+        %flatten clusters 
+        clusterCount = 0;
+        for i = 0:max(assign1)
+            clsidx = find(assign1 == i);
+            if(isempty(clsidx))
+                continue
+            end
+            assign(clsidx) = clusterCount;
+            clusterCount = clusterCount+1;
+        end
+        fclose(fid);
+        numCls=max(assign);
+        centroid=zeros(max(assign1),numF);
         for i=1:numCls
             index= (assign==i);
             centroid(i,:)=mean(X(index,:));

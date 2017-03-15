@@ -42,3 +42,7 @@ To use this library
 			CHANGE Return values as function [Outputs,Threshold,Pre_Labels] =RSVM_test...
 	
 
+3. run CompileMECfunctions.m
+
+4. Enjoy MLC
+

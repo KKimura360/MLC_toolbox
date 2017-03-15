@@ -1,0 +1,54 @@
+WikiLSHTC
+
+params.num_learners = 10;
+params.num_clusters = 300;
+params.num_threads = 32;
+params.SVP_neigh = 15;
+params.out_Dim = 50;
+params.w_thresh = 0.95;
+params.sp_thresh = 0.75;
+params.cost = 0.1;
+params.NNtest = 10;
+params.normalize = 1;
+params.fname = '';
+
+Delicious-Large
+
+params.num_learners = 5;
+params.num_clusters = 50;
+params.num_threads = 32;
+params.SVP_neigh = 50;
+params.out_Dim = 50;
+params.w_thresh = 0.70;
+params.sp_thresh = 0.70;
+params.cost = 0.1;
+params.NNtest = 70;
+params.normalize = 1;
+params.fname = '';
+
+Amazon
+
+params.num_learners = 20;
+params.num_clusters = 100;
+params.num_threads = 32;
+params.SVP_neigh = 25;
+params.out_Dim = 50;
+params.w_thresh = 0.80;
+params.sp_thresh = 0.5;
+params.cost = 0.1;
+params.NNtest = 5;
+params.normalize = 1;
+params.fname = '';
+
+Wiki10:
+params.num_learners = 5;
+params.num_clusters = 5;
+params.num_threads = 32;
+params.SVP_neigh = 50;
+params.out_Dim = 75;
+params.w_thresh = 0.75;
+params.sp_thresh = 0.5;
+params.cost = 0.1;
+params.NNtest = 11;
+params.normalize = 1;
+params.fname = '';

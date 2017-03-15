@@ -17,8 +17,8 @@ CompileMIToolbox
 cd ../../../../
 
 %% SLEEC
-cd function/OutSource/SLEEC/
-make
+cd function/OutSource/SLEECcode/
+make_SLEEC
 cd ../../../
 
 %% BMaD (asso)

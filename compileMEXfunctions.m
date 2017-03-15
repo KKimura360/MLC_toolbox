@@ -22,7 +22,7 @@ make
 cd ../../../
 
 %% BMaD (asso)
-cd function/Outsource/mdl4bmf/
+cd function/OutSource/mdl4bmf/
 makeasso
 cd ../../../
 %Add newmethods

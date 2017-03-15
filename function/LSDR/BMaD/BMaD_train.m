@@ -29,14 +29,19 @@ end
 % reduced dim of labels
 dim=method.param{1}.dim;
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
 dim=min(dim,numL);
-[Z V]=asso(Y,NumFactor,tau); % Z: Nxdim Y: KxL  
+tau=method.param{1}.tau;
+time=cell(2,1);
+tmptime=cputime;
+
+[V Z]=asso(Y,dim,tau); % Z: Nxdim Y: KxL  
+time{end}=cputime-tmptime;
 
 model=cell(3,1);
- [model{1},time{label}]=feval([method.name{2},'_train'],X,Z,Popmethod(method));
+ [model{1},time{1}]=feval([method.name{2},'_train'],X,Z,Popmethod(method));
 model{2}=Z;
 model{3}=V;
 

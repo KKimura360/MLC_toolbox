@@ -14,7 +14,7 @@ function[conf,time]=BMaD_test(X,Y,Xt,model,method)
 %%% Method  
 time=cell(2,1);
 %Call next model
-[tmpconf,time{1}]=feval([method.name{2},'_test'],X,tmpY,Xt,model{1},Popmethod(method));
+[tmpconf,time{1}]=feval([method.name{2},'_test'],X,model{2},Xt,model{1},Popmethod(method));
 tmptime=cputime;
 [tmppred]=Thresholding(tmpconf,method.th);
 conf=tmppred * model{3};

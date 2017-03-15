@@ -8,7 +8,7 @@ Feature Space Dimension Reduction (FSDR)
 FSDR-unsupervised method (confirmed), PCA, NMF, RFS     
 FSDR-supervised method (confirmed), MLSI, MFFM, OPLS, MLHSL, FScore, MLJMI, MLMIM, MLMRMR  
 FSDR-supervised method (uncofirmed) READER  
-Label Space Dimension Reduction (LSDR), CSSP,PLST,CPLST,FaIE  
+Label Space Dimension Reduction (LSDR), CSSP,PLST,CPLST,FaIE,BMaD  
 Process methods, CC, Meta-Label CC, PS, triClass    
 MLC-base classifiers (confirmed), BR, LP  
 MLC-base classifiers (unconfirmed), BPMLL, CLR, rankSVM  

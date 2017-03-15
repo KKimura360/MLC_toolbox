@@ -20,4 +20,9 @@ cd ../../../../
 cd function/OutSource/SLEEC/
 make
 cd ../../../
+
+%% BMaD (asso)
+cd function/Outsource/mdl4bmf/
+makeasso
+cd ../../../
 %Add newmethods

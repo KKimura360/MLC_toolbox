@@ -1,0 +1,49 @@
+MDL4BMF source code
+===================
+
+DISCLAIMER
+
+  This source code is provided only for academic use.
+
+
+Requirements
+------------
+
+o Matlab 
+o C-compiler
+
+Installation
+------------
+
+Copy the packet somewhere where your Matlab can find the code and start Matlab. First, you need to compile the MEX-programs. To do this, issue
+> make_select_best_column
+in Matlab. If you want to also compute the actual factors (returning them has not yet been implemented in the actual MDL code), you must also issue
+> makeasso
+in Matlab. If you have not used MEX-compiler in your Matlab before, you probably need to configure it:
+> mex setup
+Notice that the compiler will make code that works only in the architechture where it is compiled. 
+
+Notice for Windows users: select_best_column uses pthreads for multi-threaded execution. As this library is not present under Windows, only the single-threaded verion is compiled. Trying to use [s]mdl4bmf with more than 1 process will result in error.
+
+Usage
+-----
+
+The script `mdl4bmf.m' returns the MDL-optimal model order (and the corresponding parameter `t' for Asso). The script `cv4bmf.m' does the same with cross validation. If your data is sparse, you should use `smdl4bmf.m' instead of `mdl4bmf.m'.
+
+All scripts have build-in help texts. To see how they work, type
+> help mdl4bmf
+
+A short example
+---------------
+
+The following example creates a data set and computes its model order.
+
+> Borig = double(rand(200, 40) < 0.2);
+> Corig = double(rand(40, 400) < 0.2); % these are the true factors
+> Aorig = bprod(Borig, Corig);         % Aorig is 200-by-400
+> N = double(rand(200, 400) < 0.05);   % noise
+> A = xor(A, N);
+> T = 0.1:0.1:1;                       % let's try some different t's
+> [k, t] = mdl4bmf(A, 'errorMeasure', 'all') % the actual work
+> [B, C] = asso(A', k.DtMtypedXor, t.DtMtypedXor); % notice the transpose of A!
+

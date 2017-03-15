@@ -1,358 +1,765 @@
-Number of Datapoints : 6655 NumClusters : 5 
-		Cluster 1 Points 2 
-		Cluster 2 Points 130 
-		Cluster 3 Points 6353 
-		Cluster 4 Points 101 
-		Cluster 5 Points 69 
-
-
-Number of Datapoints : 6353 NumClusters : 7 
-		Cluster 1 Points 874 
-		Cluster 2 Points 29 
-		Cluster 3 Points 3367 
-		Cluster 4 Points 174 
-		Cluster 5 Points 645 
-		Cluster 6 Points 1255 
-		Cluster 7 Points 9 
-
-
-Number of Datapoints : 3367 NumClusters : 4 
-		Cluster 1 Points 38 
-		Cluster 2 Points 0 
-		Cluster 3 Points 3327 
-		Cluster 4 Points 2 
-
-
-Number of Datapoints : 3327 NumClusters : 4 
-		Cluster 1 Points 3256 
-		Cluster 2 Points 10 
-		Cluster 3 Points 52 
-		Cluster 4 Points 9 
-
-
-Number of Datapoints : 3256 NumClusters : 4 
-		Cluster 1 Points 3251 
-		Cluster 2 Points 0 
-		Cluster 3 Points 0 
-		Cluster 4 Points 5 
-
-
-Number of Datapoints : 3251 NumClusters : 4 
-		Cluster 1 Points 3 
-		Cluster 2 Points 6 
-		Cluster 3 Points 0 
-		Cluster 4 Points 3242 
-
-
-Number of Datapoints : 3242 NumClusters : 4 
-		Cluster 1 Points 4 
-		Cluster 2 Points 3220 
-		Cluster 3 Points 3 
-		Cluster 4 Points 15 
-
-
-Number of Datapoints : 3220 NumClusters : 4 
-		Cluster 1 Points 3217 
-		Cluster 2 Points 0 
-		Cluster 3 Points 3 
-
-
-Number of Datapoints : 3217 NumClusters : 4 
-		Cluster 1 Points 4 
-		Cluster 2 Points 6 
-		Cluster 3 Points 0 
-		Cluster 4 Points 3207 
-
-
-Number of Datapoints : 3207 NumClusters : 4 
-		Cluster 1 Points 0 
-		Cluster 2 Points 3207 
-		Cluster 3 Points 0 
-
-
-Number of Datapoints : 3207 NumClusters : 4 
-		Cluster 1 Points 11 
-		Cluster 2 Points 3191 
-		Cluster 3 Points 0 
-		Cluster 4 Points 5 
-
-
-Number of Datapoints : 3191 NumClusters : 4 
-		Cluster 1 Points 3173 
-		Cluster 2 Points 16 
-		Cluster 3 Points 0 
-		Cluster 4 Points 2 
-
-
-Number of Datapoints : 3173 NumClusters : 4 
-		Cluster 1 Points 3169 
-		Cluster 2 Points 0 
-		Cluster 3 Points 4 
-
-
-Number of Datapoints : 3169 NumClusters : 4 
-		Cluster 1 Points 3 
-		Cluster 2 Points 4 
-		Cluster 3 Points 0 
-		Cluster 4 Points 3162 
-
-
-Number of Datapoints : 3162 NumClusters : 4 
-		Cluster 1 Points 3158 
-		Cluster 2 Points 0 
-		Cluster 3 Points 4 
-
-
-Number of Datapoints : 3158 NumClusters : 4 
-		Cluster 1 Points 3 
-		Cluster 2 Points 4 
-		Cluster 3 Points 4 
-		Cluster 4 Points 3147 
-
-
-Number of Datapoints : 3147 NumClusters : 4 
-		Cluster 1 Points 3142 
-		Cluster 2 Points 0 
-		Cluster 3 Points 5 
-
-
-Number of Datapoints : 3142 NumClusters : 4 
-		Cluster 1 Points 4 
-		Cluster 2 Points 3087 
-		Cluster 3 Points 40 
-		Cluster 4 Points 11 
-
-
-Number of Datapoints : 3087 NumClusters : 4 
-		Cluster 1 Points 79 
-		Cluster 2 Points 2997 
-		Cluster 3 Points 2 
-		Cluster 4 Points 9 
-
-
-Number of Datapoints : 2997 NumClusters : 3 
-		Cluster 1 Points 2990 
+Number of Datapoints : 1532 NumClusters : 5 
+		Cluster 1 Points 523 
 		Cluster 2 Points 3 
-		Cluster 3 Points 4 
+		Cluster 3 Points 991 
+		Cluster 4 Points 12 
+		Cluster 5 Points 3 
 
 
-Number of Datapoints : 2990 NumClusters : 3 
-		Cluster 1 Points 7 
-		Cluster 2 Points 2980 
-		Cluster 3 Points 3 
+Number of Datapoints : 523 NumClusters : 2 
+		Cluster 1 Points 129 
+		Cluster 2 Points 394 
 
 
-Number of Datapoints : 2980 NumClusters : 3 
-		Cluster 1 Points 2937 
-		Cluster 2 Points 1 
-		Cluster 3 Points 42 
-
-
-Number of Datapoints : 2937 NumClusters : 3 
-		Cluster 1 Points 47 
-		Cluster 2 Points 2881 
-		Cluster 3 Points 9 
-
-
-Number of Datapoints : 2881 NumClusters : 3 
-		Cluster 1 Points 2863 
-		Cluster 2 Points 13 
-		Cluster 3 Points 5 
-
-
-Number of Datapoints : 2863 NumClusters : 3 
-		Cluster 1 Points 4 
-		Cluster 2 Points 2490 
-		Cluster 3 Points 369 
-
-
-Number of Datapoints : 2490 NumClusters : 3 
-		Cluster 1 Points 917 
-		Cluster 2 Points 1556 
-		Cluster 3 Points 17 
-
-
-Number of Datapoints : 1556 NumClusters : 2 
-		Cluster 1 Points 3 
-		Cluster 2 Points 1553 
-
-
-Number of Datapoints : 1553 NumClusters : 2 
-		Cluster 1 Points 1475 
-		Cluster 2 Points 78 
-
-
-Number of Datapoints : 1475 NumClusters : 2 
+Number of Datapoints : 991 NumClusters : 2 
 		Cluster 1 Points 1 
-		Cluster 2 Points 1474 
+		Cluster 2 Points 990 
 
 
-Number of Datapoints : 1474 NumClusters : 2 
-		Cluster 1 Points 1459 
-		Cluster 2 Points 15 
+Number of Datapoints : 990 NumClusters : 2 
+		Cluster 1 Points 990 
 
 
-Number of Datapoints : 1459 NumClusters : 2 
-		Cluster 1 Points 1459 
+Number of Datapoints : 990 NumClusters : 2 
+		Cluster 1 Points 855 
+		Cluster 2 Points 135 
 
 
-Number of Datapoints : 1459 NumClusters : 2 
-		Cluster 1 Points 81 
-		Cluster 2 Points 1378 
+Number of Datapoints : 855 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 855 
 
 
-Number of Datapoints : 1378 NumClusters : 2 
-		Cluster 1 Points 7 
-		Cluster 2 Points 1371 
+Number of Datapoints : 855 NumClusters : 2 
+		Cluster 1 Points 841 
+		Cluster 2 Points 14 
 
 
-Number of Datapoints : 1371 NumClusters : 2 
-		Cluster 1 Points 1371 
+Number of Datapoints : 841 NumClusters : 2 
+		Cluster 1 Points 834 
+		Cluster 2 Points 7 
 
 
-Number of Datapoints : 1371 NumClusters : 2 
-		Cluster 1 Points 32 
-		Cluster 2 Points 1339 
+Number of Datapoints : 834 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 834 
 
 
-Number of Datapoints : 1339 NumClusters : 2 
-		Cluster 1 Points 1339 
+Number of Datapoints : 834 NumClusters : 2 
+		Cluster 1 Points 809 
+		Cluster 2 Points 25 
 
 
-Number of Datapoints : 1339 NumClusters : 2 
-		Cluster 1 Points 2 
-		Cluster 2 Points 1337 
+Number of Datapoints : 809 NumClusters : 2 
+		Cluster 1 Points 809 
 
 
-Number of Datapoints : 1337 NumClusters : 2 
-		Cluster 1 Points 54 
-		Cluster 2 Points 1283 
+Number of Datapoints : 809 NumClusters : 2 
+		Cluster 1 Points 10 
+		Cluster 2 Points 799 
 
 
-Number of Datapoints : 1283 NumClusters : 2 
-		Cluster 1 Points 1282 
-		Cluster 2 Points 1 
+Number of Datapoints : 799 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 799 
 
 
-Number of Datapoints : 1282 NumClusters : 2 
-		Cluster 1 Points 12 
-		Cluster 2 Points 1270 
-
-
-Number of Datapoints : 1270 NumClusters : 2 
-		Cluster 1 Points 1262 
+Number of Datapoints : 799 NumClusters : 2 
+		Cluster 1 Points 791 
 		Cluster 2 Points 8 
 
 
-Number of Datapoints : 1262 NumClusters : 2 
-		Cluster 1 Points 1222 
-		Cluster 2 Points 40 
+Number of Datapoints : 791 NumClusters : 2 
+		Cluster 1 Points 791 
 
 
-Number of Datapoints : 1222 NumClusters : 2 
-		Cluster 1 Points 1 
-		Cluster 2 Points 1221 
+Number of Datapoints : 791 NumClusters : 2 
+		Cluster 1 Points 791 
 
 
-Number of Datapoints : 1221 NumClusters : 2 
-		Cluster 1 Points 14 
-		Cluster 2 Points 1207 
+Number of Datapoints : 791 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 791 
 
 
-Number of Datapoints : 1207 NumClusters : 2 
-		Cluster 1 Points 1128 
-		Cluster 2 Points 79 
-
-
-Number of Datapoints : 1128 NumClusters : 2 
-		Cluster 1 Points 4 
-		Cluster 2 Points 1124 
-
-
-Number of Datapoints : 1124 NumClusters : 2 
-		Cluster 1 Points 1120 
-		Cluster 2 Points 4 
-
-
-Number of Datapoints : 1120 NumClusters : 2 
-		Cluster 1 Points 1117 
-		Cluster 2 Points 3 
-
-
-Number of Datapoints : 1117 NumClusters : 2 
-		Cluster 1 Points 1117 
-
-
-Number of Datapoints : 1117 NumClusters : 2 
-		Cluster 1 Points 21 
-		Cluster 2 Points 1096 
-
-
-Number of Datapoints : 1096 NumClusters : 2 
-		Cluster 1 Points 1096 
-
-
-Number of Datapoints : 1096 NumClusters : 2 
-		Cluster 1 Points 40 
-		Cluster 2 Points 1056 
-
-
-Number of Datapoints : 1056 NumClusters : 2 
-		Cluster 1 Points 1051 
+Number of Datapoints : 791 NumClusters : 2 
+		Cluster 1 Points 786 
 		Cluster 2 Points 5 
 
 
-Number of Datapoints : 1051 NumClusters : 2 
-		Cluster 1 Points 1051 
+Number of Datapoints : 786 NumClusters : 2 
+		Cluster 1 Points 786 
 
 
-Number of Datapoints : 1051 NumClusters : 2 
-		Cluster 1 Points 1050 
+Number of Datapoints : 786 NumClusters : 2 
+		Cluster 1 Points 786 
+
+
+Number of Datapoints : 786 NumClusters : 2 
+		Cluster 1 Points 6 
+		Cluster 2 Points 780 
+
+
+Number of Datapoints : 780 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 780 
+
+
+Number of Datapoints : 780 NumClusters : 2 
+		Cluster 1 Points 776 
+		Cluster 2 Points 4 
+
+
+Number of Datapoints : 776 NumClusters : 2 
+		Cluster 1 Points 776 
+
+
+Number of Datapoints : 776 NumClusters : 2 
+		Cluster 1 Points 776 
+
+
+Number of Datapoints : 776 NumClusters : 2 
+		Cluster 1 Points 776 
+
+
+Number of Datapoints : 776 NumClusters : 2 
+		Cluster 1 Points 776 
+
+
+Number of Datapoints : 776 NumClusters : 2 
+		Cluster 1 Points 769 
+		Cluster 2 Points 7 
+
+
+Number of Datapoints : 769 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 769 
+
+
+Number of Datapoints : 769 NumClusters : 2 
+		Cluster 1 Points 769 
+
+
+Number of Datapoints : 769 NumClusters : 2 
+		Cluster 1 Points 5 
+		Cluster 2 Points 764 
+
+
+Number of Datapoints : 764 NumClusters : 2 
+		Cluster 1 Points 757 
+		Cluster 2 Points 7 
+
+
+Number of Datapoints : 757 NumClusters : 2 
+		Cluster 1 Points 757 
+
+
+Number of Datapoints : 757 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 757 
+
+
+Number of Datapoints : 757 NumClusters : 2 
+		Cluster 1 Points 757 
+
+
+Number of Datapoints : 757 NumClusters : 2 
+		Cluster 1 Points 757 
+
+
+Number of Datapoints : 757 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 757 
+
+
+Number of Datapoints : 757 NumClusters : 2 
+		Cluster 1 Points 752 
+		Cluster 2 Points 5 
+
+
+Number of Datapoints : 752 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 752 
+
+
+Number of Datapoints : 752 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 752 
+
+
+Number of Datapoints : 752 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 752 
+
+
+Number of Datapoints : 752 NumClusters : 2 
+		Cluster 1 Points 7 
+		Cluster 2 Points 745 
+
+
+Number of Datapoints : 745 NumClusters : 2 
+		Cluster 1 Points 4 
+		Cluster 2 Points 741 
+
+
+Number of Datapoints : 741 NumClusters : 2 
+		Cluster 1 Points 729 
+		Cluster 2 Points 12 
+
+
+Number of Datapoints : 729 NumClusters : 2 
+		Cluster 1 Points 729 
+
+
+Number of Datapoints : 729 NumClusters : 2 
+		Cluster 1 Points 725 
+		Cluster 2 Points 4 
+
+
+Number of Datapoints : 725 NumClusters : 2 
+		Cluster 1 Points 695 
+		Cluster 2 Points 30 
+
+
+Number of Datapoints : 695 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 695 
+
+
+Number of Datapoints : 695 NumClusters : 2 
+		Cluster 1 Points 695 
+
+
+Number of Datapoints : 695 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 695 
+
+
+Number of Datapoints : 695 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 695 
+
+
+Number of Datapoints : 695 NumClusters : 2 
+		Cluster 1 Points 668 
+		Cluster 2 Points 27 
+
+
+Number of Datapoints : 668 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 668 
+
+
+Number of Datapoints : 668 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 668 
+
+
+Number of Datapoints : 668 NumClusters : 2 
+		Cluster 1 Points 668 
+
+
+Number of Datapoints : 668 NumClusters : 2 
+		Cluster 1 Points 5 
+		Cluster 2 Points 663 
+
+
+Number of Datapoints : 663 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 663 
+
+
+Number of Datapoints : 663 NumClusters : 2 
+		Cluster 1 Points 663 
+
+
+Number of Datapoints : 663 NumClusters : 2 
+		Cluster 1 Points 663 
+
+
+Number of Datapoints : 663 NumClusters : 2 
+		Cluster 1 Points 654 
+		Cluster 2 Points 9 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 654 
+
+
+Number of Datapoints : 654 NumClusters : 2 
+		Cluster 1 Points 2 
+		Cluster 2 Points 652 
+
+
+Number of Datapoints : 652 NumClusters : 2 
+		Cluster 1 Points 652 
+
+
+Number of Datapoints : 652 NumClusters : 2 
+		Cluster 1 Points 652 
+
+
+Number of Datapoints : 652 NumClusters : 2 
+		Cluster 1 Points 652 
+
+
+Number of Datapoints : 652 NumClusters : 2 
+		Cluster 1 Points 652 
+
+
+Number of Datapoints : 652 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 652 
+
+
+Number of Datapoints : 652 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 652 
+
+
+Number of Datapoints : 652 NumClusters : 2 
+		Cluster 1 Points 635 
+		Cluster 2 Points 17 
+
+
+Number of Datapoints : 635 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 635 
+
+
+Number of Datapoints : 635 NumClusters : 2 
+		Cluster 1 Points 635 
+
+
+Number of Datapoints : 635 NumClusters : 2 
+		Cluster 1 Points 625 
+		Cluster 2 Points 10 
+
+
+Number of Datapoints : 625 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 625 
+
+
+Number of Datapoints : 625 NumClusters : 2 
+		Cluster 1 Points 625 
+
+
+Number of Datapoints : 625 NumClusters : 2 
+		Cluster 1 Points 625 
+
+
+Number of Datapoints : 625 NumClusters : 2 
+		Cluster 1 Points 625 
+
+
+Number of Datapoints : 625 NumClusters : 2 
+		Cluster 1 Points 625 
+
+
+Number of Datapoints : 625 NumClusters : 2 
+		Cluster 1 Points 622 
+		Cluster 2 Points 3 
+
+
+Number of Datapoints : 622 NumClusters : 2 
+		Cluster 1 Points 5 
+		Cluster 2 Points 617 
+
+
+Number of Datapoints : 617 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 617 
+
+
+Number of Datapoints : 617 NumClusters : 2 
+		Cluster 1 Points 6 
+		Cluster 2 Points 611 
+
+
+Number of Datapoints : 611 NumClusters : 2 
+		Cluster 1 Points 611 
+
+
+Number of Datapoints : 611 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 611 
+
+
+Number of Datapoints : 611 NumClusters : 2 
+		Cluster 1 Points 611 
+
+
+Number of Datapoints : 611 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 611 
+
+
+Number of Datapoints : 611 NumClusters : 2 
+		Cluster 1 Points 3 
+		Cluster 2 Points 608 
+
+
+Number of Datapoints : 608 NumClusters : 2 
+		Cluster 1 Points 608 
+
+
+Number of Datapoints : 608 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 608 
+
+
+Number of Datapoints : 608 NumClusters : 2 
+		Cluster 1 Points 608 
+
+
+Number of Datapoints : 608 NumClusters : 2 
+		Cluster 1 Points 1 
+		Cluster 2 Points 607 
+
+
+Number of Datapoints : 607 NumClusters : 2 
+		Cluster 1 Points 606 
 		Cluster 2 Points 1 
 
 
-Number of Datapoints : 1050 NumClusters : 2 
-		Cluster 1 Points 1 
-		Cluster 2 Points 1049 
+Number of Datapoints : 606 NumClusters : 2 
+		Cluster 1 Points 21 
+		Cluster 2 Points 585 
 
 
-Number of Datapoints : 1049 NumClusters : 2 
-		Cluster 1 Points 15 
-		Cluster 2 Points 1034 
-
-
-Number of Datapoints : 1034 NumClusters : 2 
+Number of Datapoints : 585 NumClusters : 2 
 		Cluster 1 Points 7 
-		Cluster 2 Points 1027 
+		Cluster 2 Points 578 
 
 
-Number of Datapoints : 1027 NumClusters : 2 
-		Cluster 1 Points 1025 
+Number of Datapoints : 578 NumClusters : 2 
+		Cluster 1 Points 578 
+
+
+Number of Datapoints : 578 NumClusters : 2 
+		Cluster 1 Points 575 
+		Cluster 2 Points 3 
+
+
+Number of Datapoints : 575 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 575 
+
+
+Number of Datapoints : 575 NumClusters : 2 
+		Cluster 1 Points 575 
+
+
+Number of Datapoints : 575 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 575 
+
+
+Number of Datapoints : 575 NumClusters : 2 
+		Cluster 1 Points 575 
+
+
+Number of Datapoints : 575 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 575 
+
+
+Number of Datapoints : 575 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 575 
+
+
+Number of Datapoints : 575 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 575 
+
+
+Number of Datapoints : 575 NumClusters : 2 
+		Cluster 1 Points 569 
+		Cluster 2 Points 6 
+
+
+Number of Datapoints : 569 NumClusters : 2 
+		Cluster 1 Points 569 
+
+
+Number of Datapoints : 569 NumClusters : 2 
+		Cluster 1 Points 569 
+
+
+Number of Datapoints : 569 NumClusters : 2 
+		Cluster 1 Points 567 
 		Cluster 2 Points 2 
 
 
-Number of Datapoints : 1025 NumClusters : 2 
-		Cluster 1 Points 9 
-		Cluster 2 Points 1016 
+Number of Datapoints : 567 NumClusters : 2 
+		Cluster 1 Points 562 
+		Cluster 2 Points 5 
 
 
-Number of Datapoints : 1016 NumClusters : 2 
-		Cluster 1 Points 8 
-		Cluster 2 Points 1008 
+Number of Datapoints : 562 NumClusters : 2 
+		Cluster 1 Points 562 
 
 
-Number of Datapoints : 1008 NumClusters : 2 
+Number of Datapoints : 562 NumClusters : 2 
+		Cluster 1 Points 2 
+		Cluster 2 Points 560 
+
+
+Number of Datapoints : 560 NumClusters : 2 
 		Cluster 1 Points 0 
-		Cluster 2 Points 1008 
+		Cluster 2 Points 560 
 
 
-Number of Datapoints : 1008 NumClusters : 2 
-		Cluster 1 Points 985 
-		Cluster 2 Points 23 
+Number of Datapoints : 560 NumClusters : 2 
+		Cluster 1 Points 558 
+		Cluster 2 Points 2 
 
 
-Number of Datapoints : 1255 NumClusters : 2 
-		Cluster 1 Points 412 
-		Cluster 2 Points 843 
+Number of Datapoints : 558 NumClusters : 2 
+		Cluster 1 Points 558 
+
+
+Number of Datapoints : 558 NumClusters : 2 
+		Cluster 1 Points 558 
+
+
+Number of Datapoints : 558 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 558 
+
+
+Number of Datapoints : 558 NumClusters : 2 
+		Cluster 1 Points 558 
+
+
+Number of Datapoints : 558 NumClusters : 2 
+		Cluster 1 Points 558 
+
+
+Number of Datapoints : 558 NumClusters : 2 
+		Cluster 1 Points 1 
+		Cluster 2 Points 557 
+
+
+Number of Datapoints : 557 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 557 
+
+
+Number of Datapoints : 557 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 557 
+
+
+Number of Datapoints : 557 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 557 
+
+
+Number of Datapoints : 557 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 557 
+
+
+Number of Datapoints : 557 NumClusters : 2 
+		Cluster 1 Points 3 
+		Cluster 2 Points 554 
+
+
+Number of Datapoints : 554 NumClusters : 2 
+		Cluster 1 Points 554 
+
+
+Number of Datapoints : 554 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 554 
+
+
+Number of Datapoints : 554 NumClusters : 2 
+		Cluster 1 Points 6 
+		Cluster 2 Points 548 
+
+
+Number of Datapoints : 548 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 548 
+
+
+Number of Datapoints : 548 NumClusters : 2 
+		Cluster 1 Points 2 
+		Cluster 2 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 546 
+
+
+Number of Datapoints : 546 NumClusters : 2 
+		Cluster 1 Points 5 
+		Cluster 2 Points 541 
+
+
+Number of Datapoints : 541 NumClusters : 2 
+		Cluster 1 Points 541 
+
+
+Number of Datapoints : 541 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 541 
+
+
+Number of Datapoints : 541 NumClusters : 2 
+		Cluster 1 Points 541 
+
+
+Number of Datapoints : 541 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 541 
+
+
+Number of Datapoints : 541 NumClusters : 2 
+		Cluster 1 Points 541 
+
+
+Number of Datapoints : 541 NumClusters : 2 
+		Cluster 1 Points 541 
+
+
+Number of Datapoints : 541 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 541 
+
+
+Number of Datapoints : 541 NumClusters : 2 
+		Cluster 1 Points 541 
+
+
+Number of Datapoints : 541 NumClusters : 2 
+		Cluster 1 Points 5 
+		Cluster 2 Points 536 
+
+
+Number of Datapoints : 536 NumClusters : 2 
+		Cluster 1 Points 536 
+
+
+Number of Datapoints : 536 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 536 
+
+
+Number of Datapoints : 536 NumClusters : 2 
+		Cluster 1 Points 536 
+
+
+Number of Datapoints : 536 NumClusters : 2 
+		Cluster 1 Points 0 
+		Cluster 2 Points 536 
+
+
+Number of Datapoints : 536 NumClusters : 2 
+		Cluster 1 Points 536 
+
+
+Number of Datapoints : 536 NumClusters : 2 
+		Cluster 1 Points 534 
+		Cluster 2 Points 2 
+
+
+Number of Datapoints : 534 NumClusters : 2 
+		Cluster 1 Points 503 
+		Cluster 2 Points 31 
+
+
+Number of Datapoints : 503 NumClusters : 2 
+		Cluster 1 Points 497 
+		Cluster 2 Points 6 
 
 

@@ -100,7 +100,7 @@ switch ClsMethod
         for i = 0:max(assign1)
             clsidx = find(assign1 == i);
             if(isempty(clsidx))
-                continue
+                continue;
             end
             assign(clsidx) = clusterCount;
             clusterCount = clusterCount+1;
@@ -129,6 +129,7 @@ fprintf('CALL: %s\n',method.name{2});
 for Clscount =1:numCls
     % instance separation
     instanceindex=(assign==Clscount);
+    fprintf('Cluster %d,has %d instances\n',Clscount,sum(instanceindex));  
     tmpX=X(instanceindex,:);
     tmpY=Y(instanceindex,:);
     %Learning model

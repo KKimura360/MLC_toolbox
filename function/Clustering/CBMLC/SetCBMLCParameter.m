@@ -12,4 +12,4 @@ param.ClsMethod='hkmeans';
 %param.SCtype=1;
 
 %for hierarchical k-means
-param.mxPts=1000;
+param.mxPts=500;

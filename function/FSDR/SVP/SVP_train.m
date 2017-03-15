@@ -30,23 +30,27 @@ mxitr=200;
 %verbosity
 verbosity=1;
 %thread
-numThreads=1;
+numThreads=2;
 %
 cost=0.1;
 
 time=cell(2,1);
 tmptime=cputime;
-model=cell(1,1);
+model=cell(2,1);
 % to normalized and shift
 normY = sqrt(sum((Y'.^2), 1)) + 1e-10;
 tmpY = bsxfun(@rdivide, Y', normY);
-tmpY=tmpY';
+tmpY=sparse(tmpY');
 
-numk1=method.param{1}.numk1;
-numk1=min(numk1,numN);
+numk=method.param{1}.numk;
+numk=min(numk,numN);
 dim=min(dim,numN);
+w_thresh=method.param{1}.w_thresh;
+spParam=method.param{1}.sp_thresh;
 
-[Om,OmVal,neighborIdx]=findKNN_test(tmpY', numk1,numThreads);
+
+
+[Om,OmVal,neighborIdx]=findKNN_test(tmpY',numk,numThreads);
 
 neighborIdx=neighborIdx';
 done=false;
@@ -56,10 +60,11 @@ MOmega=sparse(I,J,OmVal(:),numN,numN);
 
 while(~done)
     try
-        [U, S, V]=lansvd(MOmega,outDim,'L');
-        Uinit=U*srt(S);
+        [U, S, V]=lansvd(MOmega,dim,'L');
+        Uinit=U*sqrt(S);
         Vinit=V*sqrt(S);
         [U, V]=WAltMin_asymm(Om(:), OmVal(:), mxitr, tol, Uinit, Vinit, numThreads);
+	done=true;
     catch exception
          msgString = getReport(exception);
          disp(msgString);
@@ -78,19 +83,19 @@ if(w_idx==0)
     w_idx = 1;
 end
 W_lin(abs(W_lin)<W_sort(w_idx)) = 0;
-W = sparse(W_I, W_J, W_lin, size(X,2), outDim);
+W = sparse(W_I, W_J, W_lin, size(X,2), dim);
   
 Zct = full(X*W);
-sp_thresh_v = zeros(outDim, 1);
+sp_thresh_v = zeros(dim, 1);
 
-for sp_i= 1:outDim
+for sp_i= 1:dim
     [a, a_idx] = sort(abs(Zct(:, sp_i)));
-    sp_thresh = a_idx(1:ceil(nc*spParam));
+    sp_thresh = a_idx(1:ceil(numN*spParam));
     Zct(sp_thresh, sp_i) = 0;
     sp_thresh_v(sp_i) = a(sp_thresh(end));
 end
 
-model{1}=W;
+model{2}=W;
 
 %Update X
 tmpX=Zct;

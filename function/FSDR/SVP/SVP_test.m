@@ -16,7 +16,7 @@ time=cell(2,1);
 tmptime=cputime;
 %NOTE X must be processed correctly on previous layers
 % to shift in the same manner
-W=model{1};
+W=model{2};
 tmpX=X*W;
 tmpXt=Xt*W;
 

@@ -8,11 +8,13 @@ function[model,method,time]=ridge_train(X,y,method)
 %method.base.invX is common matrix for ridge regression
 
 %if invX is already calculated by the others, use that 
-if isfield(method.base,'invX')
-    time=cputime;
-    model=method.base.invX*y;
-    time=cputime-time;
-    return;
+if isfield(method.base,'invX') 
+    if size(method.base.invX,2) ==size(y,1)
+        time=cputime;
+        model=method.base.invX*y;
+        time=cputime-time;
+        return;
+    end
 end
 
 %if ridge parameter is not set

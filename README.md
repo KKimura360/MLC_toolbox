@@ -3,10 +3,10 @@ A MATLAB/OCTAVE library for Multi-Label Classification
 
 ## Current available functions: 
 Clustering-based method, CBMLC, HOMER, CLMLC SLEEC(?) 
-Ensemble-based method,   ECC, RAkEL, RAkEL-d fRAkEL, TREMLC, MLCEnsemble,COCOA  
+Ensemble-based method,   ECC, RAkEL, RAkEL-d, fRAkEL, TREMLC, MLCEnsemble,COCOA  
 Feature Space Dimension Reduction (FSDR)  
-FSDR-unsupervised method (confirmed), PCA, NMF, RFS     
-FSDR-supervised method (confirmed), MLSI, MFFM, OPLS, MLHSL, FScore, MLJMI, MLMIM, MLMRMR, SVP  
+FSDR-unsupervised method (confirmed), PCA, NMF, RFS, LPP, NPE,      
+FSDR-supervised method (confirmed), MLSI, MFFM, OPLS, MHSL, FScore, MLJMI, MLMIM, MLMRMR, SVP, CCA, MLDA, MIFS,   
 FSDR-supervised method (uncofirmed) READER  
 Label Space Dimension Reduction (LSDR), CSSP,PLST,CPLST,FaIE,BMaD,LEML  
 Process methods, CC, Meta-Label CC, PS, triClass    

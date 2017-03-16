@@ -16,13 +16,17 @@ function [model,time] = MLJMI_train(X,Y,method)
 %%% Method
 
 %% Get input parameters
+[numN,numF]=size(X);
+[~,numL]=size(Y);
 dim     = method.param{1}.dim;
+if ischar(dim)
+    eval(['dim=',method.param{1}.dim]);
+    dim=ceil(dim);
+end
 numStat = method.param{1}.numStat;
 factor  = method.param{1}.factor;
 
 %% Initialization
-numF = size(X,2);
-numL = size(Y,2);
 time=cell(2,1);
 tmptime=cputime;
 model = cell(2,1);

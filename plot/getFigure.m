@@ -1,4 +1,4 @@
-function getFigure(Result,dataname,change,criteria,filename)
+function getFigure(Result,dataname,change,criterion,filename)
 %% Input
 %Result: cell(numData,numTrial,numCV,numMethod)
 %dataNames: datasetname
@@ -16,35 +16,34 @@ function getFigure(Result,dataname,change,criteria,filename)
 [numParam]=length(Result);
 [numTrial]=length(Result{1});
 [numCV]=length(Result{1}{1});
-[numCriteria]=length(criteria);
-meanMat=zeros(numCriteria,numParam);
-stdMat=meanMat;
-for i=1:numCriteria;
-    tmpvec=zeros(numParam,(numTrial*numCV));
-    for j=1:numParam
-    for k=1:numTrial
-    for l=1:numCV
-       eval(['tmpMat(j,(k+(l-1)*k))=Result{j}{k}{l}.',criteria{i},';']);
-    end
-    end
-    end
-meanMat(i,:)=mean(tmpMat,2);
-stdMat(i,:)=std(tmpMat');
+
+
+tmpMat=zeros(numParam,(numTrial*numCV));
+for j=1:numParam
+for k=1:numTrial
+for l=1:numCV
+    eval(['tmpMat(j,(k+(l-1)*k))=Result{j}{k}{l}.',criterion,';']);
+end
+end
 end
 
+meanVec=mean(tmpMat);
+
+
 % Preliminary
-Styles={'r-+','y-s','g-x','k-*','m-^','b-o'};
-maxy=max(max(meanMat));
-miny=min(min(meanMat));
+Styles={'r-+'};
+maxy=max(max(meanVec));
+miny=min(min(meanVec));
 
 figure;
 ylim([miny, maxy]);
-for i=1:numCriteria
-    plot(1:numParam,meanMat(i,:),Styles{i},'LineWidth',2,'MarkerSize',7);
-    hold on;
-end
-    set(gca,'XTickLabel',change.value,'XTick',1:numParam);
-    xlabel([change.name,'-',change.param]);
-    title(dataname); 
-    grid on;
-    legend(criteria);
+plot(1:numParam,meanVec,Styles{1},'LineWidth',2,'MarkerSize',7);
+hold on;
+set(gca,'XTickLabel',change.value,'XTick',1:numParam);
+xlabel([change.name,'-',change.param]);
+title([dataname,'-',criterion]); 
+grid on;
+        
+if nargin >4
+    saveas(gcf,filename)
+end    

@@ -10,12 +10,19 @@ function[model,time]=NMF_train(X,Y,method)
 %Lee, D. D., & Seung, H. S. (2001). Algorithms for non-negative matrix factorization. In Advances in neural information processing systems (pp. 556-562).
 
 %%% Method
+[numN,numF]=size(X);
+[~,numL]=size(Y);
+
 if ~isfield(method.param{1},'iter')
     method.param{1}.iter=30;
 end
 
 %% Initialization
 dim=method.param{1}.dim;
+if ischar(dim)
+    eval(['dim=',method.param{1}.dim,';']);
+    dim=ceil(dim);
+end
 iter=method.param{1}.iter;
 model=cell(2,1);
 time=cell(2,1);

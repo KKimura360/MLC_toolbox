@@ -1,9 +1,10 @@
-function getLabelAnalysis(Y,Yt,pred,conf)
+function getLabelAnalysis(Y,Yt,pred,conf,filenames)
 %% Input
 %Y: Label matrix for traning
 %Yt: Label matrix for test
 %pred: prediction result (binary)
 %conf: prediction result (confidence value)
+%filenames: filenames to save figures (4x1 strings)
 %% Output
 % Figures
 
@@ -32,6 +33,8 @@ bar(rankYt);
 title('#instance of test');
 grid on;
 
+saveas(gcf,filenames{1});
+
 %Label-based  true/false - positive/negative result
 figure;
 %true positive 
@@ -46,6 +49,7 @@ normTN= FP ./ (sum(Yt==0));
 %false negative
 FN= sum((pred==0) .* (Yt==1));
 normFN= FN ./ (sum(Yt==1));
+
 
 subplot(4,1,1)
 bar(TP);
@@ -65,6 +69,9 @@ bar(FN);
 title('False-Negative, (Yhat=0,Y=1)');
 grid on;
 
+saveas(gcf,filenames{2});
+
+%% Ratio Base results
 figure;
 
 subplot(4,1,1)
@@ -85,7 +92,9 @@ bar(normFN);
 title('Ratio:False-Negative, (Yhat=0,Y=1)/ sum(Y=1)');
 grid on;
 
+saveas(gcf,filenames{3});
 
+%% Label-based Analysis 
 %% label-based auc 
 figure;
 subplot(3,1,1);
@@ -123,3 +132,4 @@ cont=sum(tmppred) ./ (numNt);
 bar(cont')
 title('Top-3 contribution')
 grid on;
+saveas(gcf,filenames{4});

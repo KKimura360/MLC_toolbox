@@ -9,13 +9,11 @@ function[model,time]=SVP_train(X,Y,method)
 %model: A learned model (cell(2,1))
 %time : computation time
 %% Reference (APA style from google scholar)
-%Sun, L., Ceran, B., & Ye, J. (2010, July). A scalable two-stage approach for a class of dimensionality reduction techniques. In Proceedings of the 16th ACM SIGKDD international conference on Knowledge discovery and data mining (pp. 313-322). ACM.
-%Sun, L., Kudo, M., & Kimura, K. (2016, August). A Scalable Clustering-Based Local Multi-Label Classification Method. In ECAI 2016: 22nd European Conference on Artificial Intelligence, 29 August-2 September 2016, The Hague, The Netherlands-Including Prestigious Applications of Artificial Intelligence (PAIS 2016) (Vol. 285, p. 261). IOS Press.
-%https://github.com/futuresun912/CLMLC
 
 %%% Method
 %% initialization
 % number of reduced dim
+[numN,numF]=size(X);
 [numN,numL]=size(Y);
 dim=method.param{1}.dim;
 if ischar(dim)

@@ -14,15 +14,19 @@ function [model,time] = MLMRMR_train(X,Y,method)
 % Peng, H., Long, F., & Ding, C. (2005). Feature selection based on mutual information criteria of max-dependency, max-relevance, and min-redundancy. IEEE Transactions on pattern analysis and machine intelligence, 27(8), 1226-1238.
 
 %%% Method
+[numN,numF]=size(X);
+[~,numL]=size(Y);
 
 %% Get the input parameters
 dim     = method.param{1}.dim;
+if ischar(dim)
+    eval(['dim=',method.param{1}.dim]);
+    dim=ceil(dim);
+end
 numStat = method.param{1}.numStat;
 factor  = method.param{1}.factor;
 
 %% Initialization
-numF = size(X,2);
-numL = size(Y,2);
 time=cell(2,1);
 tmptime=cputime;
 

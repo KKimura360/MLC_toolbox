@@ -18,7 +18,7 @@ V = model{3};
 U=sprand(size(Xt,1),size(V,2),1);
 tmptime=cputime;
 for i=1:30
-    U=updateU(Xt,U,V);
+    U=updateNMF(Xt,U,V);
 end
 time{end}=cputime-tmptime;
 % Testing

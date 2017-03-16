@@ -9,7 +9,7 @@ rng('default')
 
 %% Select Dataset with a rate of training/test instances
 %Dataset name
-dataname='enron';
+dataname='medical';
 %number of CV corresponding to the rate of instances 
 numCV=10;   %: 80%traning/10%test: 3,5,10 are available
 
@@ -24,7 +24,7 @@ numCV=10;   %: 80%traning/10%test: 3,5,10 are available
 %if you want to conduct feature selection, clustering and MLC with this
 %order, method.func will be set as follows:
 %method.func={'FSDR','Clustering','MLC'}
-method.name={'FScore','BR'};
+method.name={'RAkEL','LP'};
 method.param=cell(length(method.name),1);
 %parameter set
 for m= 1:length(method.name)
@@ -40,7 +40,7 @@ method.base.name='linear_svm';
 % base classifier methodeters 
 method.base.param.svmparam='-s 2 -q';
 %method.base.param.k=10;
-method.base.param.lambda=10;
+%method.base.param.lambda=10;
 
 %% Thresholding 
 % 'Scut','Pcut','Rcut' are availabel, but 'RCut','Pcut' are not implemented
@@ -83,5 +83,7 @@ end
 end
 %Visualization
 res
-getLabelAnalysis(Y,Yt,pred,conf);
+
+filenames={'LASample1.png','LASample2.png','LASample3.png','LASample4.png'};
+getLabelAnalysis(Y,Yt,pred,conf,filenames);
 

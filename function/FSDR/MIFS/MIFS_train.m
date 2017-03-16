@@ -15,6 +15,8 @@ function [model,time] = MIFS_train(X,Y,method)
 %%% Method 
 
 %% Initialization
+[~,numF] = size(X);
+[numN,numL] = size(Y);
 alpha = method.param{1}.alpha;
 beta  = method.param{1}.beta;
 gamma = method.param{1}.gamma;
@@ -28,8 +30,7 @@ if ischar(dim)
     eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
-[~,numF] = size(X);
-[numN,numL] = size(Y);
+
 time=cell(2,1);
 tmptime=cputime;
 

@@ -18,12 +18,10 @@ alpha = method.param{1}.alpha;
 dim   = method.param{1}.dim;
 t_MAX = method.param{1}.iter;
 [numN, numF] = size(X); 
-
 if ischar(dim)
     eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
-
 time=cell(2,1);
 tmptime=cputime;
 
@@ -53,7 +51,6 @@ end
 
 %% Select the top ranked features
 W = U(1:numF,:);
-% Remove the first row of W (corresponding to b)
 X = X(:,2:end);
 W = W(2:end,:);
 
@@ -61,8 +58,8 @@ W = W(2:end,:);
 [~, fea_order] = sort(sum(W.^2,2),'descend');
 id = fea_order(1:dim);
 X  = X(:,id);
-
 time{end}=cputime-tmptime;
+
 %% Return the learned model
 model = cell(3,1);
 [model{1},time{1}] = feval([method.name{2},'_train'],X,Y,Popmethod(method));

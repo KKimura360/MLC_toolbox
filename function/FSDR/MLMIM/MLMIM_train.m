@@ -20,11 +20,6 @@ dim = method.param{1}.dim;
 numStat = method.param{1}.numStat;
 factor = method.param{1}.factor;
 
-if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
-    dim=ceil(dim);
-end
-
 %% Initialization
 numF = size(X,2);
 numL = size(Y,2);

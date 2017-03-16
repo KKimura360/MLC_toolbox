@@ -31,7 +31,6 @@ for i = 1 : num_F
         end
         %% NOTE new version round function is needed
           edges = round(edges,3);
-%         edges = round(edges);
         X(:,i) = discretize(array_fea,edges,values);
     end
 end

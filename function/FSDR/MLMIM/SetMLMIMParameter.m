@@ -4,6 +4,6 @@ function[param]=SetMLMIMParameter(~)
 % param.numStat Number of statuses of discretized features (3 or 5)
 % param.factor  Factor of discretization
 
-param.dim     = 200;
+param.dim     = '0.8*numF';
 param.numStat = 3;
 param.factor  = 1;

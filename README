@@ -3,7 +3,7 @@ README
 To use this library
 
 
-1. Download all libraries in the list
+1. Download all libraries in the list (we have 1-6 libraries in this toolbox. function/OutSource
 
 	1.liblinear  (recommend the latest ver.)
 	2.libsvm     (recommend the latest ver.)
@@ -26,8 +26,11 @@ To use this library
 		CLMLC:https://github.com/futuresun912/CLMLC
 		MLSF: https://github.com/futuresun912/MLSF
 		MLC_MATLAB:https://github.com/futuresun912/MLC_Matlab
+		
+	7. SLEECcode from http://www.manikvarma.org/
+	
 
-2. Change functions and file names implemented by Prof. Min-Ling Zhang,
+2. Change functions and file names implemented by Prof. Min-Ling Zhang,  (not necessary now)
  UNFORTUNATELY, our naming rules are overlapped to his rule. (algorithm_train.m or algorithm_test.m)
 	1. For Rank-SVM
 		1.filename:RankSVM_train, RankSVM_test ---> RankSVM_train_raw.m RankSVM_test_raw.m 
@@ -42,7 +45,7 @@ To use this library
 			CHANGE Return values as function [Outputs,Threshold,Pre_Labels] =RSVM_test...
 	
 
-3. run CompileMECfunctions.m
+3. run CompileMEXfunctions.m
 
 4. Enjoy MLC
 

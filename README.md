@@ -10,7 +10,7 @@ FSDR-supervised method (confirmed), MLSI, MFFM, OPLS, MHSL, FScore, MLJMI, MLMIM
 FSDR-supervised method (uncofirmed) READER  
 Label Space Dimension Reduction (LSDR), CSSP,PLST,CPLST,FaIE,BMaD,LEML  
 Process methods, CC, Meta-Label CC, PS, triClass    
-MLC-base classifiers (confirmed), BR, LP, MLKNN, BR with Random Under/Over Sampling, Top-k   
+MLC-base classifiers (confirmed), BR, LP, MLKNN, BR with Random Under/Over Sampling, Top-k,FastXML(confirmed only on Windows)   
 MLC-base classifiers (unconfirmed), BPMLL, CLR, rankSVM  
 
 Base Classifiers

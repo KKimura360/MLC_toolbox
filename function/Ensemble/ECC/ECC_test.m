@@ -43,11 +43,13 @@ for i=1:numM
     tmpY=Y(model{i+numM},:);
     % use sampled fetaures
     tmpXt=Xt(:,model{i+numM*2});
+    nzeroLabelind=(sum(tmpY)>0);
+    tmpY=tmpY(:,nzeroLabelind);
     %Call Next model, rCC 
-    [tmpconf,time{i}]=feval([method.name{2},'_test'],tmpX,Y,tmpXt,model{i},Popmethod(method));
+    [tmpconf,time{i}]=feval([method.name{2},'_test'],tmpX,tmpY,tmpXt,model{i},Popmethod(method));
     % summation
     tmpconf
-    conf=conf+tmpconf;
+    conf(:,nzeroLabelind)=conf(:,nzeroLabelind)+tmpconf(:,nzeroLabelind);
 end
 % divide by the total ensemble to obtain ratio
 conf=conf./ numM;

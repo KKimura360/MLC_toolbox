@@ -3,7 +3,7 @@ function[param]=SetMHSLParameter(~)
 
 %Number of Clusters
 param.gamma  = 1;
-param.dim    = '0.8*numF';
+param.dim    = 100;
 opt_w.k      = 10;
 opt_w.NeighborMode = 'KNN';
 opt_w.WeightMode   = 'HeatKernel';

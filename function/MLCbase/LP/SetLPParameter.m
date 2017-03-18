@@ -1,2 +1,2 @@
-function[param]=setLPParameter(pseudo)
+function[param]=SetLPParameter(pseudo)
 param='';

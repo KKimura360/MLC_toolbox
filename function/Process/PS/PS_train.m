@@ -10,8 +10,9 @@ function[model,time]=PS_train(X,Y,method)
 %method.param{x}.type: 'disjoint', it calls RAkELd
 %% Reference (APA style from google scholar)
 %Read, J., Pfahringer, B., & Holmes, G. (2008, December). Multi-label classification using ensembles of pruned sets. In Data Mining, 2008. ICDM'08. Eighth IEEE International Conference on (pp. 995-1000). IEEE.
-%% Method
-[numN numF]=size(X);
+%%% Method
+%% Initialization
+[numN,numF]=size(X);
 [numNL,numL]=size(Y);
 %error check 
 %size check

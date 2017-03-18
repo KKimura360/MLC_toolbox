@@ -8,10 +8,13 @@ function[conf,time]=BR_test(X,Y,Xt,model,method)
 %conf: confidence values (Nt x L);
 %time: computation time 
 
+%%% method
+
 %% Initialization
 [numNt,~]=size(Xt);
 numL=length(model);
 conf=zeros(numNt,numL);
+
 time=cell(numL+1,1);
 time{end}=0;
 

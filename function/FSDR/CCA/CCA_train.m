@@ -17,7 +17,7 @@ numF  = size(X,2);
 dim   = method.param{1}.dim;
 gamma = method.param{1}.gamma;
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
 if dim >= numF

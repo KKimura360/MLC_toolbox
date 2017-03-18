@@ -13,7 +13,7 @@ function[model,time]=rCC_train(X,Y,method)
 
 %%% Method
 
-[numN numF]=size(X);
+[numN, numF]=size(X);
 [numNL,numL]=size(Y);
 
 %% Initialization
@@ -30,7 +30,7 @@ fprintf('CALL: %s\n',method.base.name);
 for label=1:numL
     if label>1
         %problem transformation, adding label info. to the feature
-        tmpX= [X Y(:,chainorder(label-1))];
+        tmpX= [X, Y(:,chainorder(label-1))];
     else
         % the first label does not have any parents. 
         tmpX=X;

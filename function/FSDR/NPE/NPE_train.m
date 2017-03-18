@@ -20,7 +20,7 @@ gamma = method.param{1}.gamma;
 opt_w = method.param{1}.opt_w;
 [numN,numF] = size(X);
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
 if dim >= numF

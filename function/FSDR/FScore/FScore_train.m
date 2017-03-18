@@ -12,7 +12,7 @@ function [model,time] = FScore_train(X,Y,method)
 
 %% Initialization
 [~,numL] = size(Y);
-[~, numF] = size(X);
+[numN, numF] = size(X);
 W = zeros(1,numF);
 dim = method.param{1}.dim;
 if ischar(dim)

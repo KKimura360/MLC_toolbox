@@ -1,6 +1,6 @@
 function[param]=SetLPPParameter(~)
 %setLPPParameter
-param.dim   = '0.8*numF';
+param.dim   = 100;
 param.gamma = 1;
 opt_w.k     = 10;
 opt_w.NeighborMode = 'KNN';

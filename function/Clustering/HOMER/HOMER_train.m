@@ -2,8 +2,10 @@ function[model,time]=HOMER_train(X,Y,method)
 %% Input
 %X: Feature Matrix (NxF)
 %Y: Label   Matrix (NxL)
-%method.param{x}.ClsMethod: Clustering method (now only balanced k-means is
-%allowed)
+%method.param{x}.ClsMethod: Clustering method
+% randpatrition : HOMER-R
+% balancedkmeans: HOMER-B
+% kmeans or litekmeans: HOMER-K
 %method.param{x}.numCls:    a number of clusters
 %% Output
 %model: A learned model ( cell(numCls+2,1))
@@ -43,14 +45,20 @@ end
             
 
 %% Initialization
-numCls=method.param{1}.numCls;
-ClsMethod=method.param{1}.ClsMethod;
 [numN numF]=size(X);
 [numNL,numL]=size(Y);
+
+%numCls
+numCls=method.param{1}.numCls;
+if ischar(numCls)
+    eval(['numCls=',method.param{1}.numCls,';']);
+    numCls=ceil(numCls);
+end
+
+ClsMethod=method.param{1}.ClsMethod;
 time=cell(numCls+2,1);
 tmptime=cputime;
-%size check
-sizeCheck;
+
 
 %% Clustering
 %if number of labels are larger than number of clusters

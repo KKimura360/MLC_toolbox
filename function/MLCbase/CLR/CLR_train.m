@@ -14,12 +14,13 @@ function[model,time]=CLR_train(X,Y,method)
 
 %%% Method
 %% Initialization
-[numN numF]=size(X);
+[numN, numF]=size(X);
 [numNL,numL]=size(Y);
 % all pairs (#pairs,2 matrix)
 allComb=nchoosek(1:(numL+1),2);
 % number of pairs
 numComb=size(allComb,1);
+
 model=cell(numComb+1,1);
 model{end}=allComb;
 time=cell(numComb+1,1);

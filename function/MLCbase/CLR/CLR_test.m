@@ -8,26 +8,29 @@ function[conf,time]=CLR_test(X,Y,Xt,model,method)
 %conf: confidence values (Nt x L);
 %linear_svm does not return confidence value since LIBLINEAR does not
 %support it. 
+%% Reference (APA style from google scholar)
+%F?rnkranz, J., H?llermeier, E., Menc?a, E. L., & Brinker, K. (2008). Multilabel classification via calibrated label ranking. Machine learning, 73(2), 133-153.
 
-%errorcheck
+%%% method
+%% Initialization
 [numN,numF]=size(X);
 [numNL,numL]=size(Y);
-
-%initialization
 [numNt,~]=size(Xt);
+
 conf=zeros(numNt,numL);
 allComb=model{end};
 numComb=size(allComb,1);
 time=cputime; 
+
+% for each instance 
 for i =1:numNt 
     tmpXt=Xt(i,:);
-    %initial pair-wise comparison
+    % the initial pair-wise comparison 
     [tmpconf]=feval([method.base.name,'_test'],X,Y,tmpXt,model{1},method);
-    %classifier compare (y1,y2) and y1=1,y2=0
-    %thus, 
+    %classifier compare (y1,y2) and y1=1,y2=0 thus
     posLabel=allComb(1,1);
     negLabel=allComb(1,2);
-    % if classifier returns over 0.5, paiw-wise rank is y1 >y2
+    % if classifier returns over 0.5, paiw-wise rank is y1 > y2
     % else y2 > y1 
     if tmpconf >=0.5
         labelRank=[posLabel,negLabel];

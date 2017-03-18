@@ -1,6 +1,6 @@
-function[param]=SetFaIEParameter(pseudo);
+function[param]=SetPLSTParameter(pseudo)
 %SetHOMERParameter
 
-param.dim=3;
+param.dim='numL*0.5';
 
 

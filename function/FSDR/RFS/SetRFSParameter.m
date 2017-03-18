@@ -7,4 +7,4 @@ function[param]=SetRFSParameter(~)
 
 param.alpha = 1;
 param.iter  = 20;
-param.dim   = '0.8*numF';
+param.dim   = 100;

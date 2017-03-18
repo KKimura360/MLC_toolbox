@@ -24,11 +24,11 @@ function[model,time]=PLST_train(X,Y,method)
 %error check 
 
 %% Initialization
-[numN numF]=size(X);
+[numN,numF]=size(X);
 [numNL,numL]=size(Y);
 dim=method.param{1}.dim;
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim',';']);
     dim=ceil(dim);
 end
 model=cell(dim+3,1);

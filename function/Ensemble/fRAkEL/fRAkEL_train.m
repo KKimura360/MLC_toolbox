@@ -9,7 +9,7 @@ function[model,time]=fRAkEL_train(X,Y,method)
     %method.param{x}.MLC.param{x}
     %method.param{x}.MLC.base
     %method.param{x}.MLC.th
-    %DONOT use fRAkEL for this an ifinite loops appears ><
+    %DONOT use fRAkEL for this. An ifinite loops appears ><
 %% Output
 %model: A learned model (cell(method.param{x}.2*numM+1,1))
 %model{1:2*numM}: classifiers (depends on called method)
@@ -20,8 +20,7 @@ function[model,time]=fRAkEL_train(X,Y,method)
 %Keigo Kimura, Mineichi Kudo, Lu Sun and Sadamori Koujaku, "Fast Random k-labelsets for Large-Scale Multi-Label Classification," in Proceedings of the 23rd International Conference on Pattern Recognition (ICPR 2016), Cancun, Mexico. 
 
 %%% Method
-
-[numN numF]=size(X);
+[numN,numF]=size(X);
 [numNL,numL]=size(Y);
 
 %error check 
@@ -42,16 +41,25 @@ if ~isfield(method.param{1},'MLC')
     error('methods for 1st layer is not set, see the detail fo fRAkEL_train')
 end
 
+if find(strcmpi(method.param{1}.MLC.name,'fRAkEL'))>0
+    error('I told you DONOT use fRAkEL here.')
+end
 
 %% Initilization
 numM=method.param{1}.numM;
 if ischar(numM)
-    eval(['numM=',method.param{1}.numM]);
+    eval(['numM=',method.param{1}.numM,';']);
     numM=ceil(numM);
 end
 numK=method.param{1}.numK;
+if ischar(numK)
+    eval(['numK=',method.param{1}.numK,';']);
+    numK=ceil(numK);
+end
+numK=min(numK,numL);
+
 model=cell(numM+2,1);
-time=cell(numM+2);
+time=cell(numM+1);
 tmptime=cputime;
 %% Label Sampling
 if strcmpi(method.param{1}.type,'disjoint') %RAkELd 
@@ -77,17 +85,17 @@ else %normal RakEL
     end
 end
 model{end}=labelSet;
-time{end}=cputime-tmptime;
+
 %Learning model for the sampled labelsets 
-fprintf('CALL: %s \n',method.name{2});
-tmptime=cputime;
 %New target matrix
 Z=Y*U;
 Z(Z>0)=1;
 % Call method method.param{1}.MLC
 %this MLC has the same structure of method (MLC.name, MLC.param)
 [model{numM+1}]=feval([method.param{1}.MLC.name{1},'_train'],X,Z,method.param{1}.MLC);
-time{end-1}=cputime-tmptime;
+time{end}=cputime-tmptime;
+
+
 for i=1:numM
     %Problem transformation
     Z= Y * U(:,i);
@@ -96,5 +104,6 @@ for i=1:numM
     tmpX=X(Z,:);
     tmpY=Y(Z,labelSet{i});
     %Call method
+    %fprintf('fRAKEL: model %d has %d instances and %d labels',i,size(tmpX,:),size(tmpY,2));
     [model{i},time{i}]=feval([method.name{2},'_train'],tmpX,tmpY,Popmethod(method));
 end

@@ -43,7 +43,7 @@ end
 % reduced dim of labels
 dim=method.param{1}.dim;
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
 %alpha is weight for reprouctablity. see the paper. 
@@ -60,7 +60,7 @@ method.base.invX=inv(XX' * XX + lambda * eye(size(XX, 2))) * XX';
 H=XX* method.base.invX;
 %Label space dimension reduction
 Omega = Y * Y' + alpha * H;
-[Z, D] = eigs(Omega, dim);
+[Z, ~] = eigs(Omega, dim);
 Vm = (Z' * Y)';
 %% CALL base classfier (should be ridge regression)
 time{end}=cputime-tmptime;

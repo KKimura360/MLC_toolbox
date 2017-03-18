@@ -17,20 +17,19 @@ function[model,time]=CSSP_train(X,Y,method)
 %%% Method
 
 %% Initialization
-[numN numF]=size(X);
+[numN,numF]=size(X);
 [numNL,numL]=size(Y);
 % reduced dim of labels
 dim=method.param{1}.dim;
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
 
 model=cell(dim+2,1);
 time=cell(dim+1,1);
 tmptime=cputime;
-%size check
-sizeCheck;
+
 
 %Learning model
 [Z, Vm] = cssp_encode(Y, dim);

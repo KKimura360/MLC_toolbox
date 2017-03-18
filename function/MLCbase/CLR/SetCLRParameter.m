@@ -1,2 +1,2 @@
-function[param]=setBRParameter(pseudo)
+function[param]=SetCLRParameter(pseudo)
 param='';

@@ -1,4 +1,4 @@
 function[param]=SetNMFParameter(~)
 %setNMFParameter
-param.dim='0.8*numF';
+param.dim=100;
 param.iter=50;

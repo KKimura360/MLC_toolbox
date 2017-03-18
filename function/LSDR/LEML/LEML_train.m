@@ -1,4 +1,4 @@
-function[model,time]=CPLST_train(X,Y,method)
+function[model,time]=LEML_train(X,Y,method)
 %% Input
 %X: Feature Matrix (NxF)
 %Y: Label   Matrix (NxL)
@@ -17,12 +17,12 @@ function[model,time]=CPLST_train(X,Y,method)
 % error check
 
 %% Initialization
-[numN numF]=size(X);
+[numN. numF]=size(X);
 [numNL,numL]=size(Y);
 % reduced dim (number of latent labels)
 dim=method.param{1}.dim;
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
 % is a weighting paramter for reproductablity term see the paper 

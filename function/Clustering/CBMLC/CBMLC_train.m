@@ -49,12 +49,19 @@ end
 
 
 %% Initialization
-[numN numF]=size(X);
+[numN,numF]=size(X);
 [numNL,numL]=size(Y);
 %number of clusters
 numCls=method.param{1}.numCls;
-%clustering method 
+
+if ischar(numCls)
+    eval(['numCls=',method.param{1}.numCls,';']);
+    numCls=ceil(numCls);
+end
+
+%clustering method
 ClsMethod=method.param{1}.ClsMethod;
+
 %for output
 model=cell(numCls+2,1);
 time=cell(numCls+1,1);
@@ -94,7 +101,6 @@ switch ClsMethod
         fid=fopen('tmp.txt','w');
         [assign1, totalClusters, ~] =hierKmeansFt(X',iter, numCls, mxPts,totalClusters, fid, frac, numThreads);
         assign = zeros(size(X, 1), 1);
-        totalClusters
         %flatten clusters 
         clusterCount = 0;
         for i = 0:max(assign1)
@@ -129,10 +135,12 @@ fprintf('CALL: %s\n',method.name{2});
 for Clscount =1:numCls
     % instance separation
     instanceindex=(assign==Clscount);
-    fprintf('Cluster %d,has %d instances\n',Clscount,sum(instanceindex));  
     tmpX=X(instanceindex,:);
     tmpY=Y(instanceindex,:);
+    nzeroLabelind=(sum(tmpY)>0);
+    tmpY=tmpY(:,nzeroLabelind);
     %Learning model
+    fprintf('Cluster %d has %d instances and %d labels \r\n',Clscount,sum(instanceindex),size(tmpY,2));  
     [model{Clscount},time{Clscount}]=feval([method.name{2},'_train'],tmpX,tmpY,Popmethod(method));
 end
 

@@ -20,7 +20,7 @@ gamma=method.param{1}.gamma;
 beta=method.param{1}.beta;
 [~,numF] = size(X);
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
 if dim >= numF

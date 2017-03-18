@@ -24,7 +24,7 @@ function[model,time]=CPLST_train(X,Y,method)
 % reduced dim (number of latent labels)
 dim=method.param{1}.dim;
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
 % is a weighting paramter for reproductablity term see the paper 
@@ -32,8 +32,6 @@ lambda=method.param{1}.lambda;
 model=cell(dim+3,1);
 time=cell(dim+1,1);
 tmptime=cputime;
-%size check
-sizeCheck;
 
 %% Leaning model
 %for the ridge regression

@@ -43,8 +43,6 @@ for i=1:numLayer
 end
 newmethod.base=method.base;
 newmethod.th=method.th;
-
-newmethod.name
 %Call next model
 fprintf('CALL: %s\n',newmethod.name{1});
 [model,time]=feval([newmethod.name{1},'_train'],X,Y,newmethod);

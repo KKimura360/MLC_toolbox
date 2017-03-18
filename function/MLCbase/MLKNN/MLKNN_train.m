@@ -3,8 +3,9 @@ function[model,time]=MLKNN_train(X,Y,method)
 %X: Feature matrix (NxF)
 %y: label vector
 %% Output
-% return empty
+%return empty
 %Reference
+%% Zhang, M. L., & Zhou, Z. H. (2007). ML-KNN: A lazy learning approach to multi-label learning. Pattern recognition, 40(7), 2038-2048.
 
 %%% method 
 [numN,~]=size(X);
@@ -12,6 +13,7 @@ time=cputime;
 type=method.param{1}.type;
 numk=method.param{1}.numk;
 numk=min(numk,numN);
+
 switch type
     case 1
         %ML-zhang MLKNN

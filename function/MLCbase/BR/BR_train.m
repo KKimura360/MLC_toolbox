@@ -8,13 +8,16 @@ function[model,time]=BR_train(X,Y,method)
 %% Output
 %model: weight matrix
 % time: computation time
+%%% method
 
 %% Initialization
-[numN numF]=size(X);
+[numN, numF]=size(X);
 [numNL,numL]=size(Y);
+
 model=cell(numL,1);
 time=cell(numL+1,1);
 time{end}=0;
+
 %Learning model
 fprintf('CALL: %s\n',method.base.name);
 for label=1:numL

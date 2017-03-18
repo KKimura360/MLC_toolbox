@@ -18,7 +18,7 @@ function[model,time]=PCA_train(X,Y,method)
 [~,numL]=size(Y);
 dim=method.param{1}.dim;
 if ischar(dim)
-    eval(['dim=',method.param{1}.dim]);
+    eval(['dim=',method.param{1}.dim,';']);
     dim=ceil(dim);
 end
 if dim >= size(X,2)

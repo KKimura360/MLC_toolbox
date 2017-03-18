@@ -10,9 +10,7 @@ function[model,time]=BMaD_train(X,Y,method)
 %model{dim+1}: Z latent labels
 %model{dim+2}: Vm the other side matrix 
 %% Reference (APA style from google scholar)
-% Lin, Z., Ding, G., Hu, M., & Wang, J. (2014). Multi-label Classification via Feature-aware Implicit Label Space Encoding. In ICML (pp. 325-333).
-% https://github.com/hsuantien/mlc_lsdr
-
+% Wicker, J., Pfahringer, B., & Kramer, S. (2012, March). Multi-label classification using boolean matrix decomposition. In Proceedings of the 27th Annual ACM Symposium on Applied Computing (pp. 179-186). ACM.
 %% NOTE
 %%% Method
 
@@ -36,9 +34,12 @@ dim=min(dim,numL);
 tau=method.param{1}.tau;
 time=cell(2,1);
 tmptime=cputime;
-
-[V Z]=asso(Y,dim,tau); % Z: Nxdim Y: KxL  
-time{end}=cputime-tmptime;
+try
+    [V,Z]=asso(Y,dim,tau); % Z: Nxdim Y: KxL  
+catch
+    error('asso failed')
+end
+    time{end}=cputime-tmptime;
 
 model=cell(3,1);
  [model{1},time{1}]=feval([method.name{2},'_train'],X,Z,Popmethod(method));

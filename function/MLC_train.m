@@ -15,7 +15,7 @@ if ~isfield(method,'count')
     method.count=0;
 end
 
-[numN numF]=size(X);
+[numN,numF]=size(X);
 [numNL,numL]=size(Y);
 
 %size check

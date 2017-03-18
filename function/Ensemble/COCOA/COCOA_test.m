@@ -6,7 +6,9 @@ function[conf, time]=COCOA_test(X,Y,Xt,model,method)
 %% Output
 %conf: confidence values (Nt x L);
 %% Reference (APA style from google scholar)
+%Zhang, M. L., Li, Y. K., & Liu, X. Y. (2015, July). Towards Class-Imbalance Aware Multi-Label Learning. In IJCAI (pp. 4041-4047).
 
+%%% method
 
 %% initialization
 [numNt,~]=size(Xt);
@@ -15,7 +17,7 @@ function[conf, time]=COCOA_test(X,Y,Xt,model,method)
 time=cell(3,1);
 time{end}=0;
 conf=zeros(numNt,numL);
-%% COCOA = Ensemble of BR + triClass
+%% COCOA =  BR + triClass
 %BR, set paramters    
 newmethod.name{1}='BR';
 newmethod.param=method.param{1}.BR.param;

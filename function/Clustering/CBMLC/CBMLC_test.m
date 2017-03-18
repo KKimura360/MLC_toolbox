@@ -17,6 +17,7 @@ function[conf,time]=CBMLC_test(X,Y,Xt,model,method)
 [numN,numF]=size(X);
 [numNL,numL]=size(Y);
 [numNt,~]=size(Xt);
+%
 conf=zeros(numNt,numL);
 numCls=length(model)-2;
 time=cell(numCls+1,1);
@@ -47,10 +48,13 @@ for Clscount =1:numCls
     tmpXt=Xt(test_instanceindex,:);
     tmpX=X(train_instanceindex,:);
     tmpY=Y(train_instanceindex,:);
+    nzeroLabelind=(sum(tmpY)>0);
+    tmpY=tmpY(:,nzeroLabelind);
     % Set the model learned by CBMLC_train with cluster(Clscount)
     tmpmodel=model{Clscount};
+    fprintf('Cluster %d has %d instances and %d labels \r\n',Clscount,sum(train_instanceindex),size(tmpY,2));   
     [tmpconf,time{Clscount}]=feval([method.name{2},'_test'],tmpX,tmpY,tmpXt,tmpmodel,Popmethod(method));
     %subsutitute the result for assigned test instance
-    conf(test_instanceindex,:)=tmpconf;
+    conf(test_instanceindex,nzeroLabelind)=tmpconf;
 end
 

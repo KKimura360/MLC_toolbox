@@ -15,12 +15,16 @@ function[model,time]=MLCC_train(X,Y,method)
 %%% Method
 %% Initialization
 numCls=method.param{1}.numCls;
+if ischar(numCls)
+    eval(['numCls=',method.param{1}.numCls,';']);
+    numCls=ceil(numCls);
+end
 time=cell(numCls+1,1);
 tmptime=cputime;
 %Label Clustering
 switch method.param{1}.ClsMethod
     case 'litekmeans'
-        [assign,centroid]=litekmeans(Y','MaxIter',20);
+        [assign,~]=litekmeans(Y','MaxIter',20);
     case 'SC'
         if strcmpi(method.param{1}.sim.type,'CLMLC')
             W=constructSimMat(X,Y,method.param{1});

@@ -1,4 +1,4 @@
 function[param]=SetPCAParameter(~)
 %setPCAParameter
 %Dimensionality of the feature subspace
-param.dim='0.8*numF';
+param.dim=100;

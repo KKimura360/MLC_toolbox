@@ -26,9 +26,8 @@ for l=1:numCV
 end
 end
 end
-
-meanVec=mean(tmpMat);
-
+meanVec=mean(tmpMat,2);
+length(meanVec)
 
 % Preliminary
 Styles={'r-+'};

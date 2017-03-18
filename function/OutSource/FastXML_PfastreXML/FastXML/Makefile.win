@@ -1,0 +1,14 @@
+INC=/I..\Tools
+CXXFLAGS=/O2
+
+all: fastXML_train fastXML_test
+
+fastXML_train:
+	cl /EHsc /Fe:fastXML_train.exe $(CXXFLAGS) $(INC) fastXML_train.cpp fastXML.cpp
+
+fastXML_test:
+	cl /EHsc /Fe:fastXML_test.exe $(CXXFLAGS) $(INC) fastXML_test.cpp fastXML.cpp
+
+clean:
+	del /f fastXML_train.exe fastXML_train.obj fastXML_test.exe fastXML_test.obj fastXML.obj
+

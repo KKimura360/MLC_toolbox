@@ -19,20 +19,31 @@ cd ../../../../
 %% SLEEC
 try
     cd function/OutSource/SLEECcode/
-    make_SLEEC
-    cd ../../../
 catch
-	warning('you need to download SLEEC code and set function/OutSource/SLEECcode, see README');
+    warning('you need to download SLEEC code and set function/OutSource/SLEECcode, see README');
 end
+try
+    make_SLEEC
+catch
+    warning('failed to compile SLEEC...');
+end
+
+    cd ../../../
+
+
 
 %% FastXMLs
 try
     cd function/OutSource/FastXML_PfastreXML/Tools/matlab
-    make
-    cd ../../../../../
-catch 
-    warning('you need to download FastXML_PfastreXML and set function/OutSource/, see README');
+catch
+      warning('you need to download FastXML_PfastreXML and set function/OutSource/, see README');
 end
+try
+    make
+catch 
+    warning('failed to compile FastXML');
+end
+cd ../../../../../
 
 %% BMaD (asso)
 cd function/OutSource/mdl4bmf/

@@ -1,0 +1,15 @@
+INC=/I..\Tools /I..\FastXML
+SRC=..\FastXML
+CXXFLAGS=/O2
+
+all: PfastreXML_train PfastreXML_test
+
+PfastreXML_train:
+	cl /EHsc /Fe:PfastreXML_train.exe $(CXXFLAGS) $(INC) PfastreXML_train.cpp fastXML.cpp
+
+PfastreXML_test:
+	cl /EHsc /Fe:PfastreXML_test.exe $(CXXFLAGS) $(INC) PfastreXML_test.cpp fastXML.cpp
+
+clean:
+	del /f PfastreXML_train.exe PfastreXML_train.obj PfastreXML_test.exe PfastreXML_test.obj fastXML.obj
+

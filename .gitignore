@@ -2,4 +2,4 @@
 *.tex
 *.asv
 function/OutSource/SLEECcode/
-function/OutSource/*.git*
+function/OutSource/FastXML_PfastreXML/

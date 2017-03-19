@@ -16,29 +16,23 @@ newmethod.name=cell(numLayer+3,1);
 newmethod.param=cell(numLayer+3,1);
 
 %% CBMLC
-newmethod.name{1}='CBMLC';
+%newmethod.name{1}='CBMLC';
+%newmethod.param{1}.dim=method.param{1}.dim;
+
+%% SVP
+newmethod.name{1}='SVP';
 newmethod.param{1}.dim=method.param{1}.dim;
-
-%% CBMLC
-newmethod.name{2}='CBMLC';
-newmethod.param{2}.ClsMethod=method.param{1}.ClsMethod;
-newmethod.param{2}.numCls=method.param{1}.numCls;
-switch newmethod.param{2}.ClsMethod
-    case 'SC'
-        newmethod.param{2}.sim=method.param{1}.sim;
-        newmethod.param{2}.SCtype=method.param{1}.SCtype;
-end
-
-%% MLCC (Meta-Label Classifier Chain)
-newmethod.name{3}='MLCC';
-newmethod.param{3}.ClsMethod='SC';
-newmethod.param{3}.numCls=method.param{1}.numMeta;
-newmethod.param{3}.SCtype=1;
-newmethod.param{3}.sim.type='CLMLC';
+newmethod.param{1}.numk=method.param{1}.numk1;
+newmethod.param{1}.w_thresh=method.param{1}.w_thresh;
+newmethod.param{1}.sp_thresh=method.param{1}.sp_thresh;
+%% KNN 
+newmethod.name{2}='MLKNN';
+newmethod.param{2}.type=2;
+newmethod.param{2}.numk=method.param{1}.numk2;
 
 for i=1:numLayer   
-    newmethod.name{i+3}=method.name{1+i};
-    newmethod.param{i+3}=method.param{1+i};
+    newmethod.name{i+2}=method.name{1+i};
+    newmethod.param{i+2}=method.param{1+i};
 end
 newmethod.base=method.base;
 newmethod.th=method.th;

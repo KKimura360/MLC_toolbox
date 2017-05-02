@@ -17,7 +17,7 @@ function[model,time]=NPE_train(X,Y,method)
 %% initialization
 dim   = method.param{1}.dim;
 gamma = method.param{1}.gamma;
-opt_w = method.param{1}.opt_w;
+k     = method.param{1}.k;
 [numN,numF] = size(X);
 if ischar(dim)
     eval(['dim=',method.param{1}.dim,';']);
@@ -30,18 +30,48 @@ model   = cell(2,1);
 time    = cell(2,1);
 tmptime = cputime;
 
-%% Learning model
-W     = constructW(X,opt_w);
-M     = speye(numN) - W;
-M     = M'*M;
-tmpX  = bsxfun(@minus,X,mean(X,1));
-Sxx   = tmpX' * tmpX;
-A     = tmpX' * M * tmpX;
-B     = Sxx + gamma.*speye(numF);
-[U,~] = eigs(A,B,dim);
+%% Construct an adjacency graph
+dotX = dot(X,X,2);
+EuD = bsxfun(@plus,dotX,dotX')-2*(X*X');
+[~,kNN] = sort(EuD,2);
+kNN = kNN(:,2:(k+1));
+
+%% Compute the weights for the graph
+W = zeros(numN,numN);
+vecOne = ones(k,1);
+for i = 1 : numN
+    Z = bsxfun(@minus,X(kNN(i,:),:),X(i,:));
+    G = Z * Z';
+    if rcond(G) < eps
+        w = vecOne;
+    else
+        G = G + eps*trace(G)*eye(k);
+        w = G \ vecOne;        
+    end
+    w = w / sum(w);
+    W(i,kNN(i,:)) = w;
+end
+W = sparse(W);
+
+%% Calcaulate M
+M = speye(numN) - W;
+M = M' * M;
+M = max(M,M');
+
+%% Data centering 
+Xmean = mean(X,1);
+X  = bsxfun(@minus,X,Xmean);
+
+%% Sovle the generalize eigenvalue problem
+A = X'*M*X;
+B = X'*X + gamma*eye(numF);
+A = max(A,A');
+B = max(B,B');
+[U,~] = eigs(A,B,dim,'sa');
+U = bsxfun(@rdivide,U,sqrt(sum(U.^2,1)));
 
 %% CALL base classfier
-tmpX      = tmpX * U;
+X = X * U;
 model{2}  = U;
 time{end} = cputime-tmptime;
-[model{1},time{1}] = feval([method.name{2},'_train'],tmpX,Y,Popmethod(method));
+[model{1},time{1}] = feval([method.name{2},'_train'],X,Y,Popmethod(method));

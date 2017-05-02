@@ -19,7 +19,7 @@ time=cell(numL+1,1);
 time{end}=0;
 
 %Learning model
-fprintf('CALL: %s\n',method.base.name);
+% fprintf('CALL: %s\n',method.base.name);
 for label=1:numL
     [model{label},method,time{label}]=feval([method.base.name,'_train'],X,Y(:,label),method);
 end

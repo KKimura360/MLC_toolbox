@@ -1,4 +1,4 @@
 function[param]=SetMLDAParameter(~)
 
-param.dim=100;
+param.dim=50;
 param.gamma=1;

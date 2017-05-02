@@ -16,7 +16,14 @@ function[model,method,time]=linear_svm_train(X,y,method)
 %if svm parameter is not set
 if ~isfield(method.base.param,'svmparam')
     warning('svm parameter is not set, default setting is applied (linear svm)\n');
-    method.base.param.svmparam='-s 2 -q'; %L2^regularized L2-loss SVC regression
+    method.base.param.svmparam='-s 2 -B 1 -q'; %L2^regularized L2-loss SVC regression
+end
+
+[numN,numF] = size(X);
+if numN > numF
+    method.base.param.svmparam='-s 2 -B 1 -q';  % Solve dual problem -- faster
+else
+    method.base.param.svmparam='-s 1 -B 1 -q';  % Solve primal problem -- faster
 end
 
 %train the model

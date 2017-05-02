@@ -20,12 +20,9 @@ time=cell(2,1);
 tmptime=cputime;
 
 %% Feature projection
-Xmean  = mean(X,1);
-tmpX   = bsxfun(@minus,X,Xmean);
-tmpXt  = bsxfun(@minus,Xt,Xmean);
-tmpX   = tmpX * U;
-tmpXt  = tmpXt * U;
+X   = X * U;
+Xt  = Xt * U;
 time{end}=cputime-tmptime;
 
 %% Testing
-[conf,time{1}] = feval([method.name{2},'_test'],tmpX,Y,tmpXt,model{1},Popmethod(method));
+[conf,time{1}] = feval([method.name{2},'_test'],X,Y,Xt,model{1},Popmethod(method));

@@ -21,8 +21,8 @@ tmptime=cputime;
 
 %% Feature projection
 meanX = mean(X,1);
-tmpX     = bsxfun(@minus,X,meanX);
-tmpXt    = bsxfun(@minus,Xt,meanX);
+tmpX  = bsxfun(@minus,X,meanX);
+tmpXt = bsxfun(@minus,Xt,meanX);
 tmpX  = tmpX * U;
 tmpXt = tmpXt * U;
 time{end}=cputime-tmptime;

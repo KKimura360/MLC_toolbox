@@ -22,9 +22,9 @@ beta  = method.param{1}.beta;
 gamma = method.param{1}.gamma;
 k     = method.param{1}.k;
 dim   = method.param{1}.dim;
-t_MAX = method.param{1}.tmax;
+maxIt = method.param{1}.maxIt;
 opt_w = method.param{1}.opt_w;
-epsilon = method.param{1}.epsilon;
+epsIt = method.param{1}.epsIt;
 lambda = method.param{1}.lambda;
 if ischar(dim)
     eval(['dim=',method.param{1}.dim,';']);
@@ -36,7 +36,7 @@ tmptime=cputime;
 
 %% Compute the Laplacian matrix
 Sx = constructW(X,opt_w);
-Dx = diag(sum(Sx));
+Dx = sparse(1:numN,1:numN,sum(Sx),numN,numN);
 Lx = Dx - Sx;
 
 %% Initialization
@@ -44,27 +44,42 @@ k = round(k * numL);
 W = rand(numF,k);
 V = rand(numN,k);
 B = rand(k,numL);
-diag_D = ones(numF,1);
+diagD = ones(numF,1);
 
 %% The iterative algorithm
 lambda_v = lambda;
 lambda_w = lambda;
 lambda_b = lambda;
-for t = 1 : t_MAX
+Qval = zeros(maxIt,1);
+t = 1;
+while t < maxIt
     % Cache some results
-    DW = bsxfun(@times,W,gamma*diag_D);
+    DW = bsxfun(@times,W,gamma*diagD);
     XW = X*W;    
     % Update V, B, W
     V = V - lambda_v * ( (V-XW) + alpha*(V*B-Y)*B' + beta*Lx*V );
     B = B - lambda_b * V' * (V*B-Y);
     W = W - lambda_w * ( X'*(XW-V) + DW );  
     % Update D
-    diag_D = 1 ./ (2 * sqrt(sum(W.^2,2) + epsilon));
+    tmpW  = sum(W.^2,2);
+    diagD = 0.5 ./ sqrt(tmpW+eps);
+    
+    % Check if convergence condition is matched
+    Qval(t) = norm(X*W-V,'fro').^2 + alpha.*norm(Y-V*B,'fro').^2 + ...
+        beta.*trace(V'*Lx*V) + gamma.*sum(sqrt(tmpW));
+    if t > 1
+        if ( abs(Qval(t)-Qval(t-1))<epsIt || abs(Qval(t)-Qval(t-1))/Qval(t-1) < epsIt )
+            t = t + 1;
+            break;
+        end
+    end
+    t = t + 1;
 end
+disp(['MIFS converged at the ',num2str(t),'th iteration with ',num2str(Qval(t-1))]);
 
 %% Select the top ranked features
-[~, fea_order] = sort(sum(W.^2,2),'descend');
-id = fea_order(1:dim);
+[~,idF] = sort(sum(W.^2,2),'descend');
+id = idF(1:dim);
 X  = X(:,id);
 time{end}=cputime-tmptime;
 

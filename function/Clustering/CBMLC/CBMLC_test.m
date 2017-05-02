@@ -42,6 +42,7 @@ for Clscount =1:numCls
     train_instanceindex=(assign==Clscount);
     % if no test instances assigned, skip the cluster
     if sum(sum(test_instanceindex))==0
+        time{Clscount} = 0;
         continue;
     end
     % problem transformation
@@ -52,7 +53,7 @@ for Clscount =1:numCls
     tmpY=tmpY(:,nzeroLabelind);
     % Set the model learned by CBMLC_train with cluster(Clscount)
     tmpmodel=model{Clscount};
-    fprintf('Cluster %d has %d instances and %d labels \r\n',Clscount,sum(train_instanceindex),size(tmpY,2));   
+%     fprintf('Cluster %d has %d instances and %d labels \r\n',Clscount,sum(train_instanceindex),size(tmpY,2));   
     [tmpconf,time{Clscount}]=feval([method.name{2},'_test'],tmpX,tmpY,tmpXt,tmpmodel,Popmethod(method));
     %subsutitute the result for assigned test instance
     conf(test_instanceindex,nzeroLabelind)=tmpconf;

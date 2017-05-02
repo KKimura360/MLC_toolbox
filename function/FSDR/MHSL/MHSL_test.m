@@ -20,6 +20,8 @@ time=cell(2,1);
 tmptime=cputime;
 
 %% Feature projection
+% X     = full(X);
+% Xt    = full(Xt);
 meanX = mean(X,1);
 tmpX  = bsxfun(@minus,X,meanX);
 tmpXt = bsxfun(@minus,Xt,meanX);

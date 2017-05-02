@@ -36,11 +36,14 @@ tmpY  = bsxfun(@minus,Y,mean(Y,1));
 Sxx   = tmpX' * tmpX;
 Sxy   = tmpX' * tmpY;
 A     = Sxy * Sxy';
-B     = Sxx + gamma.*speye(numF);
+B     = Sxx + gamma*speye(numF);
+A     = max(A,A');
+B     = max(B,B');
 [U,~] = eigs(A,B,dim);
+U     = bsxfun(@rdivide,U,sqrt(sum(U.^2,1)));
 
 %% Feature projection
-tmpX=sparse(tmpX * U);
+tmpX  = tmpX * U;
 model{2}=U;
 time{end}=cputime-tmptime;
 

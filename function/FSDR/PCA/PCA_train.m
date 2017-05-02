@@ -14,8 +14,6 @@ function[model,time]=PCA_train(X,Y,method)
 %%% Method
 
 %% initialization
-[numN,numF]=size(X);
-[~,numL]=size(Y);
 dim=method.param{1}.dim;
 if ischar(dim)
     eval(['dim=',method.param{1}.dim,';']);
@@ -31,7 +29,8 @@ tmptime = cputime;
 %% Learning model
 tmpX  = bsxfun(@minus,X,mean(X,1));
 Sxx   = tmpX'*tmpX;
-[U,~] = eigs(Sxx,dim);
+A     = max(Sxx,Sxx');
+[U,~] = eigs(A,dim);
 
 %% CALL base classfier
 tmpX      = tmpX * U;

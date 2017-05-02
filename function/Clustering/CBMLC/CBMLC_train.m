@@ -68,12 +68,13 @@ time=cell(numCls+1,1);
 
 %% Clustering
 
-fprintf('CALL: %s\n',ClsMethod);
+% fprintf('CALL: %s\n',ClsMethod);
 tmptime =cputime;
 switch ClsMethod
     %k-measn
-    case {'litekmeans','kmeans'}
-        [assign, centroid]=litekmeans(X,numCls,'MaxIter',20);
+    case 'kmeans'
+        [assign, centroid]=kmeans(X,numCls);
+%         [assign, centroid]=litekmeans(X,numCls,'MaxIter',20);
     %Spectral Clustering
     case {'SC','Spectral_Clustering'} %abbreviation of Spectral_Clsutering
         %Construct NxN adjacency matrix
@@ -131,7 +132,7 @@ model{numCls+2}=centroid;
 time{end}=cputime-tmptime;
 %% Call next model
 
-fprintf('CALL: %s\n',method.name{2});
+% fprintf('CALL: %s\n',method.name{2});
 for Clscount =1:numCls
     % instance separation
     instanceindex=(assign==Clscount);
@@ -140,7 +141,7 @@ for Clscount =1:numCls
     nzeroLabelind=(sum(tmpY)>0);
     tmpY=tmpY(:,nzeroLabelind);
     %Learning model
-    fprintf('Cluster %d has %d instances and %d labels \r\n',Clscount,sum(instanceindex),size(tmpY,2));  
+%     fprintf('Cluster %d has %d instances and %d labels \r\n',Clscount,sum(instanceindex),size(tmpY,2));  
     [model{Clscount},time{Clscount}]=feval([method.name{2},'_train'],tmpX,tmpY,Popmethod(method));
 end
 

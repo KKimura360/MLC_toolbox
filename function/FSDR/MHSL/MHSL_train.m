@@ -31,13 +31,17 @@ time    = cell(2,1);
 tmptime = cputime;
 
 %% Learning model
+% X     = full(X);
 tmpX  = bsxfun(@minus,X,mean(X,1));
 W     = constructW(Y,opt_w);
 D     = sparse(1:numN,1:numN,sum(W,1),numN,numN);
 Sxx   = tmpX' * tmpX;
 A     = tmpX' * (D.^.5*W*D.^.5) * tmpX;
-B     = Sxx + gamma.*speye(numF);
+B     = Sxx + gamma*speye(numF);
+A     = max(A,A');
+B     = max(B,B');
 [U,~] = eigs(A,B,dim);
+U     = bsxfun(@rdivide,U,sqrt(sum(U.^2,1)));
 
 %% CALL base classfier
 tmpX      = tmpX * U;

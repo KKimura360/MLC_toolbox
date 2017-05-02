@@ -1,5 +1,5 @@
 %% Compile MEX functions
-clear all;
+clear
 
 %% liblinear
 cd function/base/linearSVM/liblinear-2.1/matlab/
@@ -12,7 +12,7 @@ make
 cd ../../../../../
 
 %% MIToolbox
-cd function/OutSource/MIToolbox-3.0.0/matlab/
+cd function/OutSource/MIToolbox-v3.0.1\matlab
 CompileMIToolbox
 cd ../../../../
 

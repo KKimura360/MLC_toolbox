@@ -20,5 +20,5 @@ time{end}=0;
 
 % classify for each label
 for label=1:numL
-    [conf(:,label),time{label}]=feval([method.base.name,'_test'],X,Y(:,label),Xt,model{label},method);
+    [conf(:,label),method,time{label}]=feval([method.base.name,'_test'],X,Y(:,label),Xt,model{label},method);
 end

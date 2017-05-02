@@ -1,6 +1,6 @@
-function [eval]=Evaluation(Yt,conf,pred)
+function [evalRes,metList]=Evaluation(Yt,conf,pred,trainT,testT,evalType)
 %Yt is a ground truth
-%conf has confidence values 
+%conf has confidence values
 %pred has binary values
 
 %eval has:
@@ -21,17 +21,18 @@ function [eval]=Evaluation(Yt,conf,pred)
 %eval.dcg5     nDCG@5
 %eval.auc      label averaged auc
 
+if ~exist('evalType','var')
+    evalType = 1;
+end
+
 %Multi-label ranking based evaluation criteria
 tmp=evalPrecision(conf,Yt,5);
-eval.top1=tmp(1);
-eval.top3=tmp(3);
-eval.top5=tmp(5);
+evalRes(1:3) = tmp([1,3,5]);
 
 tmp=evalnDCG(conf,Yt,5);
-eval.dcg1=tmp(1);
-eval.dcg3=tmp(3);
-eval.dcg5=tmp(5);
-[~,eval.auc]=AVGauc(Yt',conf');
+evalRes(4:6) = tmp([1,3,5]);
+
+evalRes(7) = AVGauc(Yt',conf');
 
 %based on the other implementations, tranpose predictions and ground truth.
 Yt=Yt';
@@ -39,20 +40,47 @@ pred=pred';
 conf=conf';
 
 %exact-match
-eval.exact = Exact_match(pred,Yt);
+evalRes(8) = Exact_match(pred,Yt);
 %hamming-loss
-eval.hamming = Hamming_score(pred,Yt);
+evalRes(9) = Hamming_score(pred,Yt);
 %Label macro-F1
-[~,~,~,eval.macroF1]= LabelBasedMeasure(Yt,pred);
+[~,~,~,evalRes(10)]= LabelBasedMeasure(Yt,pred);
 %micro-F1
-eval.microF1 = MicroFMeasure(Yt,pred);
-%coverage
-eval.cov= coverage(pred,Yt);
-%average precision
-eval.pre=Average_precision(pred,Yt);
-%ranking-loss
-eval.rank=Ranking_score(pred,Yt);
-%one-error
-eval.one=One_error(pred,Yt);
+evalRes(11) = MicroFMeasure(Yt,pred);
+if evalType == 1
+    evalRes(12) = cell_sum(trainT);
+    evalRes(13) = cell_sum(testT);   
+    metList = 'top1 top3 top5 dcg1 dcg3 dcg5 auc exact hamming macroF1 microF1 trainT testT';
+elseif evalType == 2 %traing time
+    %coverage
+    evalRes(12) = coverage(conf,Yt);
+    %average precision
+    evalRes(13) = Average_precision(conf,Yt);
+    %ranking-loss
+    evalRes(14) = Ranking_score(conf,Yt);
+    %one-error
+    evalRes(15) = One_error(conf,Yt);
+    %traing time
+    evalRes(16) = cell_sum(trainT);
+    %testing time
+    evalRes(17) = cell_sum(testT);  
+    metList = 'top1 top3 top5 dcg1 dcg3 dcg5 auc exact hamming macroF1 microF1 cov pre rank one trainT testT';    
+end
 
+end
 
+% Sum the elements in a nested cell
+function s = cell_sum(c)
+s = 0;
+if isnumeric(c)
+    s = c;
+else
+    for j = 1 : length(c)
+        if isnumeric(c{j})
+            s = s + c{j};
+        else
+            s = s + cell_sum(c{j});
+        end
+    end
+end
+end

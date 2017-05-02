@@ -21,10 +21,8 @@ U      = model{2};
 Xmean  = mean(X,1);
 tmpX   = bsxfun(@minus,X,Xmean);
 tmpXt  = bsxfun(@minus,Xt,Xmean);
-tmpX   = sparse(tmpX * U);
-tmpXt  = sparse(tmpXt * U);
+tmpX   = tmpX * U;
+tmpXt  = tmpXt * U;
 time{end}=cputime-tmptime;
 
 [conf,time{1}]=feval([method.name{2},'_test'],tmpX,Y,tmpXt,model{1},Popmethod(method));
-
-

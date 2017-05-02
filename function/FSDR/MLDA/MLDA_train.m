@@ -31,6 +31,7 @@ tmptime=cputime;
 model=cell(3,1);
 
 %% Learning model
+% X     = full(X);
 newY  = Y(:,any(Y,1)); 
 C     = 1 - pdist(newY','cosine');
 C(isnan(C)) = 0;
@@ -39,17 +40,20 @@ C(logical(eye(size(C)))) = 1;
 Yc    = newY * C;
 Z     = bsxfun(@rdivide,Yc,sum(newY,2));
 m     = sum(Yc'*X,1) ./ sum(sum(Yc));
-tmpX    = X - ones(numN,1)*m;
+tmpX  = X - ones(numN,1)*m;
 numL  = size(newY,2);
 W     = sparse(1:numL,1:numL,sum(Z,1).^-1,numL,numL);
 L     = sparse(1:numN,1:numN,sum(Z,2),numN,numN);
 Sxz   = tmpX' * Z;
 Sb    = Sxz * W * Sxz';
-St    = tmpX' * L * tmpX + gamma.*speye(numF);
+St    = tmpX' * L * tmpX + gamma*speye(numF);
+Sb    = max(Sb,Sb');
+St    = max(St,St');
 [U,~] = eigs(Sb,St,dim); 
+U     = bsxfun(@rdivide,U,sqrt(sum(U.^2,1)));
 
 %% Feature projection
-tmpX     = sparse(tmpX * U);
+tmpX     = tmpX * U;
 model{2} = U;
 model{3} = m;
 time{end}=cputime-tmptime;

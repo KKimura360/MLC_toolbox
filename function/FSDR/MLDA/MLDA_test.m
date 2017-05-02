@@ -20,6 +20,8 @@ time    = cell(2,1);
 tmptime = cputime;
 
 %% Prediction
+% X     = full(X);
+% Xt    = full(Xt);
 tmpX  = X - ones(size(X,1),1)*m;
 tmpXt = Xt - ones(size(Xt,1),1)*m;
 tmpX  = sparse(tmpX * U);

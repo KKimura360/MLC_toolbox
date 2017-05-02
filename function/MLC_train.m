@@ -22,7 +22,7 @@ end
 sizeCheck;
 
 % the depth of layer
-fprintf('CALL: %s\n ', method.name{1});
+% fprintf('CALL: %s\n ', method.name{1});
 % in some cases, method will be update thus, base classifier returns method 
 % if this depth is a clustering method
 [model,time]=feval([method.name{1},'_train'],X,Y,method);

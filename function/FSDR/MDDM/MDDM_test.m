@@ -19,6 +19,8 @@ time=cell(2,1);
 tmptime=cputime;
 
 %% Prediction
+% X      = full(X);
+% Xt     = full(Xt);
 Xmean  = mean(X,1);
 tmpX   = bsxfun(@minus,X,Xmean);
 tmpXt  = bsxfun(@minus,Xt,Xmean);

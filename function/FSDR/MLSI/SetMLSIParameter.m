@@ -3,5 +3,5 @@ function[param]=SetMLSIParameter(~)
 
 %Number of Clusters
 param.beta=0.5;
-param.dim=100;
+param.dim=50;
 param.gamma=1;

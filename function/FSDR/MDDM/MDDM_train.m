@@ -27,12 +27,15 @@ time=cell(2,1);
 tmptime=cputime;
 
 %% Learning model
+% X      = full(X);
 Xmean  = mean(X,1);
 tmpX   = bsxfun(@minus,X,Xmean);
 tmpY   = bsxfun(@minus,Y,mean(Y,1));
 Sxy    = tmpX' * tmpY;
 A      = Sxy * Sxy';
+A      = max(A,A');
 [U,~]  = eigs(A,dim);
+U      = bsxfun(@rdivide,U,sqrt(sum(U.^2,1)));
    
 %% CALL base classfier
 tmpX   = tmpX*U;
@@ -40,5 +43,3 @@ model{2}=U;
 time{end}=cputime-tmptime;
 
 [model{1},time{1}]=feval([method.name{2},'_train'],tmpX,Y,Popmethod(method));
-
-

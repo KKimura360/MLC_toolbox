@@ -32,7 +32,7 @@ end
 time=cputime;
 %calculate weight matrix 
 XX=[ones(numN,1),X];
-invX=inv(XX' * XX + lambda * eye(size(XX, 2))) * XX';
+invX=(XX' * XX + lambda * eye(size(XX, 2))) \ XX';
 %obtain weight matrix for label vector y
 model=invX*y;
 %to share the invX with the other labels (for BR)

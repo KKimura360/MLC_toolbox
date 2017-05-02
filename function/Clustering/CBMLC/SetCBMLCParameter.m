@@ -4,7 +4,7 @@ function[param]=SetCBMLCParameter(pseudo)
 %Number of Clusters
 param.numCls=5;
 %Clustering method
-param.ClsMethod='litekmeans';
+param.ClsMethod='kmeans';
 
 %param.ClsMethod='SC';
 %param.sim.type='Lab-nn';

@@ -1,4 +1,4 @@
 function[param]=SetMDDMParameter(~)
 %SetMDDMFParameter
 
-param.dim=100;
+param.dim=50;

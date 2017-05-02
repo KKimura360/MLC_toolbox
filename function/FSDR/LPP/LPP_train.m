@@ -39,13 +39,15 @@ tmptime = cputime;
 %% Learning model
 W     = constructW(X,opt_w);
 D     = sparse(1:numN,1:numN,sum(W,1),numN,numN);
-tmpX  = bsxfun(@minus,X,mean(X,1));
-A     = tmpX' * W * tmpX;
-B     = tmpX' * D * tmpX + gamma.*speye(numF);
+A     = X'*W*X;
+B     = X'*D*X + gamma*speye(numF);
+A     = max(A,A');
+B     = max(B,B');
 [U,~] = eigs(A,B,dim);
+U     = bsxfun(@rdivide,U,sqrt(sum(U.^2,1)));
 
 %% CALL base classfier
-tmpX      = tmpX * U;
+X     = X * U;
 model{2}  = U;
 time{end} = cputime-tmptime;
-[model{1},time{1}] = feval([method.name{2},'_train'],tmpX,Y,Popmethod(method));
+[model{1},time{1}] = feval([method.name{2},'_train'],X,Y,Popmethod(method));

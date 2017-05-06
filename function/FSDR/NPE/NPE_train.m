@@ -67,9 +67,8 @@ A = full(X'*M*X);
 B = full(X'*X + gamma*speye(numF));
 A = max(A,A');
 B = max(B,B');
-[U,D] = eig(A,B);
-[~, idx] = sort(-diag(D));
-U = U(:,idx(1:dim));
+[U,~] = eig(A,B);
+U = U(:,(numF-dim+1):end);
 U = bsxfun(@rdivide,U,sqrt(sum(U.^2,1)));
 
 %% CALL base classfier

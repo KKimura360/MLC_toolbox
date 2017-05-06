@@ -3,7 +3,7 @@
 %% Initial Setting 
 % load this library
 clear
-addAllpath
+addAllpath % Once set the path, comment it to save time
 % Seeding
 rng('default')
 

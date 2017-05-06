@@ -27,9 +27,8 @@ time=cell(2,1);
 tmptime=cputime;
 
 %% Learning model
-% X      = full(X);
 Xmean  = mean(X,1);
-tmpX   = bsxfun(@minus,X,Xmean);
+tmpX   = full(bsxfun(@minus,X,Xmean));
 tmpY   = bsxfun(@minus,Y,mean(Y,1));
 Sxy    = tmpX' * tmpY;
 A      = Sxy * Sxy';

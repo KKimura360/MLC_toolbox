@@ -31,7 +31,6 @@ tmptime=cputime;
 model=cell(3,1);
 
 %% Learning model
-% X     = full(X);
 newY  = Y(:,any(Y,1)); 
 C     = 1 - pdist(newY','cosine');
 C(isnan(C)) = 0;

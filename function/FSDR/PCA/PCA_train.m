@@ -27,7 +27,7 @@ time    = cell(2,1);
 tmptime = cputime;
 
 %% Learning model
-tmpX  = bsxfun(@minus,X,mean(X,1));
+tmpX  = full(bsxfun(@minus,X,mean(X,1)));
 Sxx   = tmpX'*tmpX;
 A     = max(Sxx,Sxx');
 [U,~] = eigs(A,dim);
@@ -37,5 +37,3 @@ tmpX      = tmpX * U;
 model{2}  = U;
 time{end} = cputime-tmptime;
 [model{1},time{1}] = feval([method.name{2},'_train'],tmpX,Y,Popmethod(method));
-
-end

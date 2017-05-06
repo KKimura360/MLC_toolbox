@@ -9,7 +9,7 @@ for i=1:numMethod
     if i==numMethod
         Dispstring=[Dispstring,method.name{i}];
     else
-        Dispstring=[Dispstring,method.name{i},'=>'];
+        Dispstring=[Dispstring,method.name{i},' => '];
     end
 end
 fprintf(['Overview :',Dispstring,'\n']);

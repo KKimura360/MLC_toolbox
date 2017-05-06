@@ -52,7 +52,7 @@ method.th.param=0.5;
 DispSelection;
 
 %% Experiments part
-% data=sparse(data);
+data=sparse(data);
 for trial=1:1
     index=indices(:,trial);
     for fold=1:numCV

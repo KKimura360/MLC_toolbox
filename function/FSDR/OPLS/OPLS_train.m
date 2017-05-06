@@ -31,7 +31,7 @@ tmptime=cputime;
 model=cell(2,1);
 
 %% Solve the generalized eigenvalue problem: A*U = B*U*D 
-tmpX  = bsxfun(@minus,X,mean(X,1));
+tmpX  = full(bsxfun(@minus,X,mean(X,1)));
 tmpY  = bsxfun(@minus,Y,mean(Y,1));
 Sxx   = tmpX' * tmpX;
 Sxy   = tmpX' * tmpY;

@@ -39,8 +39,8 @@ tmptime = cputime;
 %% Learning model
 W     = constructW(X,opt_w);
 D     = sparse(1:numN,1:numN,sum(W,1),numN,numN);
-A     = X'*W*X;
-B     = X'*D*X + gamma*speye(numF);
+A     = full(X'*W*X);
+B     = full(X'*D*X + gamma*speye(numF));
 A     = max(A,A');
 B     = max(B,B');
 [U,~] = eigs(A,B,dim);

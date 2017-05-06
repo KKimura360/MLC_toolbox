@@ -31,8 +31,7 @@ time    = cell(2,1);
 tmptime = cputime;
 
 %% Learning model
-% X     = full(X);
-tmpX  = bsxfun(@minus,X,mean(X,1));
+tmpX  = full(bsxfun(@minus,X,mean(X,1)));
 W     = constructW(Y,opt_w);
 D     = sparse(1:numN,1:numN,sum(W,1),numN,numN);
 Sxx   = tmpX' * tmpX;

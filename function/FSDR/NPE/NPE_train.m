@@ -42,10 +42,10 @@ vecOne = ones(k,1);
 for i = 1 : numN
     Z = bsxfun(@minus,X(kNN(i,:),:),X(i,:));
     G = Z * Z';
-    if rcond(G) < eps
+    if rcond(full(G)) < eps
         w = vecOne;
     else
-        G = G + eps*trace(G)*eye(k);
+        G = G + eps*trace(G)*speye(k);
         w = G \ vecOne;        
     end
     w = w / sum(w);
@@ -58,16 +58,18 @@ M = speye(numN) - W;
 M = M' * M;
 M = max(M,M');
 
-%% Data centering 
-Xmean = mean(X,1);
-X  = bsxfun(@minus,X,Xmean);
+%% Data centering (It can be commented for large-scale datasets)
+X = bsxfun(@minus,X,mean(X,1));
 
-%% Sovle the generalize eigenvalue problem
-A = X'*M*X;
-B = X'*X + gamma*eye(numF);
+%% Solve the generalize eigenvalue problem
+M = speye(numN) - M;
+A = full(X'*M*X);
+B = full(X'*X + gamma*speye(numF));
 A = max(A,A');
 B = max(B,B');
-[U,~] = eigs(A,B,dim,'sa');
+[U,D] = eig(A,B);
+[~, idx] = sort(-diag(D));
+U = U(:,idx(1:dim));
 U = bsxfun(@rdivide,U,sqrt(sum(U.^2,1)));
 
 %% CALL base classfier

@@ -6,7 +6,7 @@ Clustering-based method, CBMLC, HOMER, CLMLC SLEEC(?)
 Ensemble-based method,   ECC, RAkEL, RAkEL-d, fRAkEL, TREMLC, MLCEnsemble,COCOA  
 Feature Space Dimension Reduction (FSDR)  
 FSDR-unsupervised method (confirmed), PCA, NMF, LPP, NPE,      
-FSDR-supervised method (confirmed), MLSI, MFFM, RFS, OPLS, MHSL, FScore, MLJMI, MLMIM, MLMRMR, SVP, CCA, MLDA, MIFS,   
+FSDR-supervised method (confirmed), MLSI, MDDM, RFS, OPLS, MHSL, FScore, MLJMI, MLMIM, MLMRMR, SVP, CCA, MLDA, MIFS,   
 Label Space Dimension Reduction (LSDR), CSSP,PLST,CPLST,FaIE,BMaD,LEML  
 Process methods, CC, Meta-Label CC, PS, triClass    
 MLC-base classifiers (confirmed), BR, LP, MLKNN, BR with Random Under/Over Sampling, Top-k,FastXML(confirmed only on Windows)   
@@ -24,12 +24,12 @@ LIBLINEAR, LIBSVM, rigde regression, k-NN
 ---
 
 # Method  
-`method.name{'{meethodname1}','{methodname2}',...}`  
+`method.name={'{meethodname1}','{methodname2}',...}`  
 In this library we can combine any problem transformation methods.  
 For example, when we want to conduct PCA for the feature selection first, and then conduct k-means to divide instances, at last, random Classifier Chain use for each cluster,  
   `method.name={'PCA',CBMLC','rCC'}`  
 methods are conducted on this order. So if you want to conduct k-means first and then conduct PCA for each cluster,   
-`method.name{'CBMLC','PCA','rCC'}`  
+`method.name={'CBMLC','PCA','rCC'}`  
 NOTE: CBMLC is Clustering Based Multi-Label Classification method.  
 
 ---

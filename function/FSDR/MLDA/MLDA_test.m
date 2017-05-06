@@ -20,12 +20,10 @@ time    = cell(2,1);
 tmptime = cputime;
 
 %% Prediction
-% X     = full(X);
-% Xt    = full(Xt);
 tmpX  = X - ones(size(X,1),1)*m;
 tmpXt = Xt - ones(size(Xt,1),1)*m;
-tmpX  = sparse(tmpX * U);
-tmpXt = sparse(tmpXt * U);
+tmpX  = tmpX * U;
+tmpXt = tmpXt * U;
 time{end}=cputime-tmptime;
 [conf,time{1}]=feval([method.name{2},'_test'],tmpX,Y,tmpXt,model{1},Popmethod(method));
 

@@ -27,10 +27,7 @@ try
 catch
     warning('failed to compile SLEEC...');
 end
-
-    cd ../../../
-
-
+cd ../../../
 
 %% FastXMLs
 try

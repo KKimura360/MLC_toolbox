@@ -12,6 +12,7 @@ for i=1:numMethod
         Dispstring=[Dispstring,method.name{i},' => '];
     end
 end
+Dispstring=[Dispstring,' => ',method.base.name];
 fprintf(['Overview :',Dispstring,'\n']);
 
 %%Threshold method

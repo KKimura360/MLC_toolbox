@@ -69,7 +69,7 @@ model{end}=Labelset;
 
 time{end}=cputime-tmptime;
 %Learning
-fprintf('CALL: %s \n',method.name{2});
+% fprintf('CALL: %s \n',method.name{2});
 for i=1:numM
     %Problem transformation
     tmpY=Y(:,Labelset{i});

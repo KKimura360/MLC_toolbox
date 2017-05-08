@@ -21,7 +21,7 @@ function[conf,time]=LP_test(X,Y,Xt,model,method)
 conf=zeros(numNt,numL);
 %give a model to base classifer (which comes from base classifier at
 %training stage)
-[tmpLabel,time]=feval([method.base.name,'_test'],X,Y,Xt,model{1},method);
+[tmpLabel,~,time]=feval([method.base.name,'_test'],X,Y,Xt,model{1},method);
 %obtain multi-label classifition result with labelset
 %CAUTION, DONOT use regression for base model, tmpLabel must be integer,
 %smaller than the label distinct.

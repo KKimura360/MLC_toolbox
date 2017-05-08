@@ -24,7 +24,7 @@ tmptime=cputime;
 [Labelset, ~, newY]=unique(Y,'rows');
 
 %Learning model
-fprintf('CALL: %s\n',method.base.name);
+% fprintf('CALL: %s\n',method.base.name);
 time{end}=cputime-tmptime;
 [tmpmodel,~,time{1}]=feval([method.base.name,'_train'],X,newY,method);
 %Learned model

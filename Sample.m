@@ -44,7 +44,7 @@ method.base.param.svmparam='-s 2 -B 1 -q';
 % method.base.param.k=10;
 
 %% Thresholding 
-% 'Scut','Pcut','Rcut' are availabel, but 'RCut','Pcut' are not implemented yet (2017/02/08)
+% 'Scut','Pcut','Rcut' are available
 method.th.type='SCut';
 method.th.param=0.5;
 

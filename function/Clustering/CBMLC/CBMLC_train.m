@@ -72,9 +72,8 @@ time=cell(numCls+1,1);
 tmptime =cputime;
 switch ClsMethod
     %k-measn
-    case 'kmeans'
-        [assign, centroid]=kmeans(X,numCls);
-%         [assign, centroid]=litekmeans(X,numCls,'MaxIter',20);
+    case {'litekmeans','kmeans'}
+        [assign, centroid]=litekmeans(X,numCls,'MaxIter',20);
     %Spectral Clustering
     case {'SC','Spectral_Clustering'} %abbreviation of Spectral_Clsutering
         %Construct NxN adjacency matrix

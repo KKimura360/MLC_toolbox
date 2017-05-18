@@ -8,7 +8,7 @@ function [evalRes,metList]=Evaluation(Yt,conf,pred,trainT,testT,evalType)
 %eval.exact    ExactMatch
 %eval.one      One-error
 %eval.cov      coverage
-%eval.rank     Ranking loss
+%eval.rank     Ranking score
 %eval.pre      Average precision
 %eval.macroF1  macroF1
 %eval.microF1  microF1
@@ -56,7 +56,7 @@ elseif evalType == 2 %traing time
     evalRes(12) = coverage(conf,Yt);
     %average precision
     evalRes(13) = Average_precision(conf,Yt);
-    %ranking-loss
+    %ranking-score
     evalRes(14) = Ranking_score(conf,Yt);
     %one-error
     evalRes(15) = One_error(conf,Yt);

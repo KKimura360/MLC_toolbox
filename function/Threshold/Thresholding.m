@@ -36,7 +36,7 @@ switch method.type
     pred=conf;
     pred(pred>method.param)=1;
     pred(pred<=method.param)=0;
-    
+        
     case {'Rcut','RCut','rcut'}
         if ~isfield(method,'param')
             warning('number of rank is not set we use label cardinality')
@@ -56,10 +56,10 @@ switch method.type
             tmp=sum(Y) ./ size(Y,1);
             method.param= ceil(tmp)*numNt;
         end
-        if legth(method.param~=numL)
+        if length(method.param)~=numL
             error('proportion score must be design for each label')
         end
-        [~,ranks]=sort(cond,'descend');
+        [~,ranks]=sort(conf,'descend');
         pred=zeros(numNt,numL);
         for i=1:numL
            pred(ranks(1:method.param(i),i),i)=1;
@@ -69,3 +69,10 @@ switch method.type
     error('%s is not surpported',method.type)
 end
 
+% Prevent from null prediction for ridge regression and knn (improve their performance)
+if isempty(find(sum(Y,2)==0,1))
+    idzero = find(sum(pred,2)==0);
+    [valmax,idmax] = max(conf(idzero,:),[],2);
+    id = find(valmax ~= 0);
+    pred(sub2ind(size(pred),idzero(id),idmax(id))) = 1;
+end

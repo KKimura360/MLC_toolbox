@@ -9,7 +9,7 @@ rng('default')
 
 %% Select Dataset with a rate of training/test instances
 %Dataset name
-dataname='enron';
+dataname='scene';
 %number of CV corresponding to the rate of instances 
 numCV=5;   %: 80%traning/10%test: 3,5,10 are available
 
@@ -34,11 +34,11 @@ end
 
 %% BaseClassifier
 % 1. Support Vector Machines
-method.base.name='linear_svm';
-method.base.param.svmparam='-s 2 -B 1 -q';
+% method.base.name='linear_svm';
+% method.base.param.svmparam='-s 2 -B 1 -q';
 % 2. Ridge Regression
-% method.base.name='ridge';
-% method.base.param.lambda=1;
+method.base.name='ridge';
+method.base.param.lambda=1;
 % 3. k Nearest Neighbors
 % method.base.name='knn';
 % method.base.param.k=10;
@@ -68,7 +68,7 @@ for trial=1:1
         %testing
         [conf,test_time]=MLC_test(X,Y,Xt,model,method);
         %Thresholding
-        [pred]=Thresholding(conf,method.th);
+        [pred]=Thresholding(conf,method.th,Y);
         %Evalution
         [tmpRes(:,fold),metList]=Evaluation(Yt,conf,pred,train_time,test_time);
     end

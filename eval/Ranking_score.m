@@ -1,5 +1,5 @@
 function RankingLoss=Ranking_score(Outputs,test_target)
-%Computing the hamming loss
+%Computing the hamming score
 %Outputs: the predicted outputs of the classifier, the output of the ith instance for the jth class is stored in Outputs(j,i)
 %test_target: the actual labels of the test instances, if the ith instance belong to the jth class, test_target(j,i)=1, otherwise test_target(j,i)=-1
 
@@ -8,7 +8,7 @@ function RankingLoss=Ranking_score(Outputs,test_target)
     temp_test_target=[];
     for i=1:num_instance
         temp=test_target(:,i);
-        if((sum(temp)~=num_class)&(sum(temp)~=-num_class))
+        if((sum(temp)~=num_class)&&(sum(temp)~=-num_class))
             temp_Outputs=[temp_Outputs,Outputs(:,i)];
             temp_test_target=[temp_test_target,temp];
         end
@@ -42,7 +42,7 @@ function RankingLoss=Ranking_score(Outputs,test_target)
                 end
             end
         end
-        rl_binary(i)=temp/(m*n);
+%         rl_binary(i)=temp/(m*n);
         rankloss=rankloss+temp/(m*n);
     end
     RankingLoss=1-rankloss/num_instance;

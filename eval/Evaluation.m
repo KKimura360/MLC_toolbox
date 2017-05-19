@@ -1,26 +1,29 @@
 function [evalRes,metList]=Evaluation(Yt,conf,pred,trainT,testT,evalType)
-%Yt is a ground truth
-%conf has confidence values
-%pred has binary values
+%Yt       ground truth matrix
+%conf     confidence matrix
+%pred     predicted binary matrix 
 
 %eval has:
-%eval.hamming  Hammingloss
-%eval.exact    ExactMatch
-%eval.one      One-error
-%eval.cov      coverage
-%eval.rank     Ranking score
-%eval.pre      Average precision
-%eval.macroF1  macroF1
-%eval.microF1  microF1
-
 %eval.top1     Top-1 accuracy
 %eval.top3     Top-3 accuracy
 %eval.top5     Top-5 accuracy
 %eval.dcg1     nDCG@1
 %eval.dcg3     nDCG@3
 %eval.dcg5     nDCG@5
-%eval.auc      label averaged auc
+%eval.auc      label averaged AUC
 
+%eval.exact    Exact-Match   (1 - Subset 0-1 loss)
+%eval.hamming  Hamming-Score (1 - Hamming loss)
+%eval.macroF1  macro-averaged F1-score
+%eval.microF1  micro-averaged F1-score
+%eval.fscore   F1-score
+%eval.acc      Accuracy
+%eval.rank     Ranking-Score (1 - ranking loss)
+%eval.pre      Average precision
+%eval.one      One-error
+%eval.cov      coverage (Normalized by numL)
+
+%Check the evaluation mode
 if ~exist('evalType','var')
     evalType = 1;
 end
@@ -41,30 +44,37 @@ conf=conf';
 
 %exact-match
 evalRes(8) = Exact_match(pred,Yt);
-%hamming-loss
+%hamming-score
 evalRes(9) = Hamming_score(pred,Yt);
 %Label macro-F1
-[~,~,~,evalRes(10)]= LabelBasedMeasure(Yt,pred);
+evalRes(10) = Macro_F1(Yt,pred);
 %micro-F1
-evalRes(11) = MicroFMeasure(Yt,pred);
+evalRes(11) = Micro_F1(Yt,pred);
+%F1-Score
+evalRes(12) = FScore(Yt,pred);
+%Accuracy
+evalRes(13) = Accuracy(Yt,pred);
 if evalType == 1
-    evalRes(12) = cell_sum(trainT);
-    evalRes(13) = cell_sum(testT);   
-    metList = 'top1 top3 top5 dcg1 dcg3 dcg5 auc exact hamming macroF1 microF1 trainT testT';
+    evalRes(14) = cell_sum(trainT);
+    evalRes(15) = cell_sum(testT);   
+    metList = 'top1 top3 top5 dcg1 dcg3 dcg5 auc exact hamming macroF1 microF1 fscore acc trainT testT';
 elseif evalType == 2 %traing time
-    %coverage
-    evalRes(12) = coverage(conf,Yt);
+    %intermediate results
+    [tmpConf,lcell,nlcell,lSize] = RankBased(conf,Yt);
     %average precision
-    evalRes(13) = Average_precision(conf,Yt);
+    evalRes(14) = Average_precision(tmpConf,lcell,lSize);
     %ranking-score
-    evalRes(14) = Ranking_score(conf,Yt);
+    evalRes(15) = Ranking_score(tmpConf,lcell,nlcell,lSize);
+    % The smaller the better for the following four metrics
     %one-error
-    evalRes(15) = One_error(conf,Yt);
+    evalRes(16) = One_error(tmpConf,lcell);
+    %coverage
+    evalRes(17) = Coverage(conf,Yt);
     %traing time
-    evalRes(16) = cell_sum(trainT);
+    evalRes(18) = cell_sum(trainT);
     %testing time
-    evalRes(17) = cell_sum(testT);  
-    metList = 'top1 top3 top5 dcg1 dcg3 dcg5 auc exact hamming macroF1 microF1 cov pre rank one trainT testT';    
+    evalRes(19) = cell_sum(testT);  
+    metList = 'top1 top3 top5 dcg1 dcg3 dcg5 auc exact hamming macroF1 microF1 fscore acc pre rank one cov trainT testT';    
 end
 
 end

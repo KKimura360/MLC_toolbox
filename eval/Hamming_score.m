@@ -1,5 +1,10 @@
-function HammingLoss = Hamming_score(Pre_Labels,test_target)
+function HammingScore = Hamming_score(Pred,Yt)
+%HAMMINGSCORE Hamming Score (1 - Hamming Loss)
+%
+%          Pred          L x Nt predicted label matrix           
+%          Yt            L x Nt groundtruth label matrix
 
-    [num_class,num_instance]=size(Pre_Labels);
-    miss_pairs=sum(sum(Pre_Labels==test_target));
-    HammingLoss=miss_pairs/(num_class*num_instance);
+    [numL,numNt] = size(Pred);
+    HammingScore = sum(sum(Pred==Yt)) / (numL*numNt);
+    
+end

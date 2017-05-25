@@ -76,7 +76,7 @@ for trial=1:1
     stdRes  = squeeze(std(tmpRes,0,2)/sqrt(numCV));
 end
 %Visualization
-printmat([meanRes,stdRes],'Eval_Res',metList,'Mean Std.');
+array2table([meanRes,stdRes],'RowNames',metList,'VariableNames',{'Mean','Std'})
 
 % filenames={'LASample1.png','LASample2.png','LASample3.png','LASample4.png'};
 % getLabelAnalysis(Y,Yt,pred,conf,filenames);

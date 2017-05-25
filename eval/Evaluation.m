@@ -57,7 +57,7 @@ evalRes(13) = Accuracy(Yt,pred);
 if evalType == 1
     evalRes(14) = cell_sum(trainT);
     evalRes(15) = cell_sum(testT);   
-    metList = 'top1 top3 top5 dcg1 dcg3 dcg5 auc exact hamming macroF1 microF1 fscore acc trainT testT';
+    metList = {'top1','top3','top5','dcg1','dcg3','dcg5','auc','exact','hamming','macroF1','microF1','fscore','acc','trainT','testT'};
 elseif evalType == 2 %traing time
     %intermediate results
     [tmpConf,lcell,nlcell,lSize] = RankBased(conf,Yt);
@@ -74,7 +74,7 @@ elseif evalType == 2 %traing time
     evalRes(18) = cell_sum(trainT);
     %testing time
     evalRes(19) = cell_sum(testT);  
-    metList = 'top1 top3 top5 dcg1 dcg3 dcg5 auc exact hamming macroF1 microF1 fscore acc pre rank one cov trainT testT';    
+    metList = {'top1','top3','top5','dcg1','dcg3','dcg5','auc','exact','hamming','macroF1','microF1','fscore','acc','pre','rank','one','cov','trainT','testT'};
 end
 
 end

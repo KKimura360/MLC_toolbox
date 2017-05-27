@@ -1,26 +1,28 @@
 function [assign, centroid] = randpartition(X, K)
+% Randomly partition the rows of X into K disjoint parts
 %% Input
-% X: label matrix (NxL)
+% X: data matrix (NxF)
 % K: number of clusters
 %% Output
-% assign: assign vector (vetor L)
+% assign: assign vector (N)
 % centeroid: centroid matrix (KxN)
 %% Reference
-%Tsoumakas, G., Katakis, I., & Vlahavas, I. (2008, September). Effective and efficient multilabel classification in domains with large number of labels. In Proc. ECML/PKDD 2008 Workshop on Mining Multidimensional Data (MMDÅf08) (pp. 30-44).
+%Tsoumakas, G., Katakis, I., & Vlahavas, I. (2008, September). Effective and efficient multilabel classification in domains with large number of labels. In Proc. ECML/PKDD 2008 Workshop on Mining Multidimensional Data (MMDÔøΩf08) (pp. 30-44).
 
 %Initialization
-X=X';
-[numL, numN] = size(X);
-%centroid = X(randsample(numL,K),:);
-assign=zeros(numL,1);
-bL=ceil(numL/K);
+numN = size(X,1);
+assign=zeros(numN,1);
+bL=ceil(numN/K);
 
 %randomly produce paritioning
-labelList=randperm(numL);
-    for i=1:k
-        if i==K 
-            assign(labelList(((i-1)*bL)+1:end))=k;
-        else
-            assign(labelList(((i-1)*bL)+1:(i*bL)))=k;
-        end
+labelList=randperm(numN);
+for i=1:K
+    if i==K
+        assign(labelList(((i-1)*bL)+1:end))=K;
+    else
+        assign(labelList(((i-1)*bL)+1:(i*bL)))=i;
     end
+end
+[centroid]=calcCentroid(X,assign,K);
+
+end

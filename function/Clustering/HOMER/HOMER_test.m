@@ -7,7 +7,7 @@ function[conf,time]=HOMER_test(X,Y,Xt,model,method)
 %conf: confidence values (Nt x L);
 %time: computation time 
 %% Reference (APA style from google scholar)
-%Tsoumakas, G., Katakis, I., & Vlahavas, I. (2008, September). Effective and efficient multilabel classification in domains with large number of labels. In Proc. ECML/PKDD 2008 Workshop on Mining Multidimensional Data (MMDÅf08) (pp. 30-44).
+%Tsoumakas, G., Katakis, I., & Vlahavas, I. (2008, September). Effective and efficient multilabel classification in domains with large number of labels. In Proc. ECML/PKDD 2008 Workshop on Mining Multidimensional Data (MMDÔøΩf08) (pp. 30-44).
 
 %%% Method
 
@@ -37,7 +37,7 @@ for Clscount=1:numCls
 end
 %classification on this layer
 [tmpconf,time{end-1}]=feval([method.name{2},'_test'],X,tmpY,Xt,tmpmodel,Popmethod(method));
-[tmppred]=Thresholding(tmpconf,method.th);
+[tmppred]=Thresholding(tmpconf,method.th,Y);
 time{end}=cputime - tmptime;
 for Clscount=1: numCls
     %problem transform

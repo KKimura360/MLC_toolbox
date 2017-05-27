@@ -1,7 +1,9 @@
-function[param]=SetHOMERParameter(pseudo)
+function[param]=SetHOMERParameter(~)
 %SetHOMERParameter
 
 %Number of Clusters
-param.numCls=5;
+param.numCls=3;
 %Clustering method
-param.ClsMethod='balancedkmeans';
+param.ClsMethod='bkmeans';
+% Spectral clustering
+param.sim = [];

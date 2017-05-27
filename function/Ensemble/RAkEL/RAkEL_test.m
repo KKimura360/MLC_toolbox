@@ -46,5 +46,3 @@ end
 conf=conf./ sumLabel;
 % if some labels are not sampled, 
 conf(isnan(conf))=0;
-
-

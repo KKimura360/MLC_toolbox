@@ -26,7 +26,7 @@ function[model,time]=HOMER_train(X,Y,method)
 %SCtype=3 normalized Laplacian   
 % See util/Spectral_Clsutering/Spectral_Clustering.m
 %% Reference (APA style from google scholar)
-%Tsoumakas, G., Katakis, I., & Vlahavas, I. (2008, September). Effective and efficient multilabel classification in domains with large number of labels. In Proc. ECML/PKDD 2008 Workshop on Mining Multidimensional Data (MMDf08) (pp. 30-44).
+%Tsoumakas, G., Katakis, I., & Vlahavas, I. (2008, September). Effective and efficient multilabel classification in domains with large number of labels. In Proc. ECML/PKDD 2008 Workshop on Mining Multidimensional Data (MMDï¿½f08) (pp. 30-44).
 
 %%% Method
 %error check 
@@ -59,21 +59,20 @@ ClsMethod=method.param{1}.ClsMethod;
 time=cell(numCls+2,1);
 tmptime=cputime;
 
-
 %% Clustering
 %if number of labels are larger than number of clusters
 %conduct clustering
 if numL > numCls
     switch ClsMethod
-        case 'balancedkmeans'
-            [assign,~]=balancedkmeans(Y,numCls,10);
+        case {'balancedkmeans','bkmeans'}
+            [assign,~]=balancedkmeans(Y',numCls,10);
         case {'litekmeasn','kmeans'}
-            [assign,~]=litekmeans(Y,numCls,'MaxIter',20);
+            [assign,~]=litekmeans(Y',numCls,'MaxIter',20);
         case {'random','randpartition'}
-            [assign,~]=randpartition(Y,numCls);
+            [assign,~]=randpartition(Y',numCls);
         case {'SC','Spectral_Clustering'}
             %NOTE: positions of X and Y are exchanged
-            W=constructSimMat(Y,X,method.param{1});
+            W=constructSimMat(X,Y',method.param{1});
             %spectral clustering
             [assign]=Spectral_Clustering(W,numCls,method.param{1});
         otherwise
@@ -90,7 +89,6 @@ end
 model=cell(numCls+2,1);
 model{numCls+1}=assign;
 
-
 %% Learning model on this layer
 %obtain new lable vector (belong to clutser or not)
 tmpY=zeros(numN,numCls);
@@ -100,7 +98,7 @@ for i=1:numCls
     tmpY(Nind,i)=1;
 end
 % HOME call next model for this new MLC problem
-fprintf('CALL: %s as base MLC clssifier \n',method.name{2});
+% fprintf('CALL: %s as base MLC clssifier \n',method.name{2});
 [model{numCls+2},time{end-1}]=feval([method.name{2},'_train'],X,tmpY,Popmethod(method));
 
 time{end}=cputime-tmptime;
@@ -122,6 +120,3 @@ for i=1:numCls
         [model{i},time{i}]=feval([method.name{1},'_train'],tmpX,tmpY,method);
     end
 end
-
-
-

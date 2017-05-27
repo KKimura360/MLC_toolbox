@@ -9,7 +9,7 @@ rng('default')
 
 %% Select Dataset with a rate of training/test instances
 %Dataset name
-dataname='scene';
+dataname='emotions';
 %number of CV corresponding to the rate of instances 
 numCV=5;   %: 80%traning/10%test: 3,5,10 are available
 
